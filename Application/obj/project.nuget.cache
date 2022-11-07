@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "T39u4amFcuvYR+waUyOqGamjKovhuJIYKcs8yOURLHzjmdddchdWabdV+sIOcRGFNwE2PAH0KLN2uB1bV/wKWA==",
+  "success": true,
+  "projectFilePath": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Application\\Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\barte\\.nuget\\packages\\google.protobuf\\3.21.9\\google.protobuf.3.21.9.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\grpc.core.api\\2.50.0-pre1\\grpc.core.api.2.50.0-pre1.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\grpc.net.client\\2.50.0-pre1\\grpc.net.client.2.50.0-pre1.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\grpc.net.common\\2.50.0-pre1\\grpc.net.common.2.50.0-pre1.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\grpc.tools\\2.50.0\\grpc.tools.2.50.0.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.0.3\\microsoft.extensions.logging.abstractions.3.0.3.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -34,7 +34,7 @@ public class JoinRideDao : IRideDao
                CoordinatesY = rideMessage.EndLocation.CoordinateY, StreetName = rideMessage.EndLocation.Street, ZipCode = rideMessage.EndLocation.Zipcode
            };
    
-           DateTime dateTime = new DateTime() {Epoch = rideMessage.StartTime};
+           DateTime dateTime = new DateTime(rideMessage.StartTime) ;
            
            rides.Add(new Ride(){Id = rideMessage.Id, DriverName = rideMessage.Driver.Name, Date = dateTime, Destination = endLocation, StartLocation = startLocation});
        }

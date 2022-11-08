@@ -11,4 +11,11 @@ public class Ride
     public Location Destination { get; set; }
     public DateTime Date { get; set; }
     public string DriverName { get; set; }
+    
+    
+
+    public bool isBetweenDates(DateTime value)
+    {
+        return Date.Epoch <= value.Epoch;
+    }
 }

@@ -12,7 +12,7 @@ public class JoinRideDao : IRideDao
     
     public JoinRideDao()
     {
-        using var channel = GrpcChannel.ForAddress("https://localhost:5443");
+         var channel = GrpcChannel.ForAddress("http://localhost:5434");
         client = new Rides.RidesClient(channel);
     }
 
@@ -24,21 +24,21 @@ public class JoinRideDao : IRideDao
        {
            Location startLocation = new Location()
            {
-               country = rideMessage.StartLocation.Country, city = rideMessage.StartLocation.City, coordinatesX = rideMessage.StartLocation.CoordinateX,
-               coordinatesY = rideMessage.StartLocation.CoordinateY, streetName = rideMessage.StartLocation.Street, zipCode = rideMessage.StartLocation.Zipcode
+               Country = rideMessage.StartLocation.Country, City = rideMessage.StartLocation.City, CoordinatesX = rideMessage.StartLocation.CoordinateX,
+               CoordinatesY = rideMessage.StartLocation.CoordinateY, StreetName = rideMessage.StartLocation.Street, ZipCode = rideMessage.StartLocation.Zipcode
            };
            
            Location endLocation = new Location()
            {
-               country = rideMessage.EndLocation.Country, city = rideMessage.EndLocation.City, coordinatesX = rideMessage.EndLocation.CoordinateX,
-               coordinatesY = rideMessage.EndLocation.CoordinateY, streetName = rideMessage.EndLocation.Street, zipCode = rideMessage.EndLocation.Zipcode
+               Country = rideMessage.EndLocation.Country, City = rideMessage.EndLocation.City, CoordinatesX = rideMessage.EndLocation.CoordinateX,
+               CoordinatesY = rideMessage.EndLocation.CoordinateY, StreetName = rideMessage.EndLocation.Street, ZipCode = rideMessage.EndLocation.Zipcode
            };
-
-           DateTime dateTime = new DateTime() {epoch = rideMessage.StartTime};
+   
+           DateTime dateTime = new DateTime() {Epoch = rideMessage.StartTime};
            
-           rides.Add(new Ride(){Id = rideMessage.Id, Driver = rideMessage.Driver.Name, dateTime = dateTime, destination = endLocation, startLocation = startLocation});
+           rides.Add(new Ride(){Id = rideMessage.Id, DriverName = rideMessage.Driver.Name, Date = dateTime, Destination = endLocation, StartLocation = startLocation});
        }
-
+   
        return rides;
    }
 
@@ -50,7 +50,7 @@ public class JoinRideDao : IRideDao
             PassengerName = name,
             PassengerPhone = phone
         };
-
+    
         var reply = await client.joinRideAsync(joinRideDto);
         return reply.ConfirmationMessage_;
     }

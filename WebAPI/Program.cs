@@ -1,3 +1,9 @@
+using Application;
+using Application.DaoInterfaces;
+using Application.DAOs;
+using Application.Logic;
+using Application.LogicInterfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -6,6 +12,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddScoped<IRideDao, JoinRideDao>();
+builder.Services.AddScoped<IRideLogic, RideLogic>();
+
 
 var app = builder.Build();
 
@@ -17,6 +27,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true) // allow any origin
+    .AllowCredentials());
 
 app.UseAuthorization();
 

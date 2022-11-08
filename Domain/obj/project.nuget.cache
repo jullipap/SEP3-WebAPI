@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SlWU1mSfFhI5oWA58YtV315i0JRbPIqoEur966zpBfn+9gJum0TUxGC/mhgjnajcf5uSp/A22u4Fr0dxFvyGwQ==",
+  "dgSpecHash": "4fxywzmUQLg9uaNHkkipkY6Qk4+Q07t5nM9U0jJ5UpgAScMKZo5pf+/W3JUOQPlL4ZgVJ7CX7IAZRKJodgXYjg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\migle\\RiderProjects\\SEP3\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Domain\\Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

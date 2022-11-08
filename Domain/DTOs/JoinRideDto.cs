@@ -2,7 +2,7 @@
 
 public class JoinRideDto
 {
-    private int rideId { get; set; }
-    private string name { get; set; }
-    private string phone { get; set; }
+    public int RideId { get; set; }
+    public string Name { get; set; }
+    public string Phone { get; set; }
 }

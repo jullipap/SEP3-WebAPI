@@ -5,63 +5,47 @@
       "Google.Protobuf/3.21.9": {
         "type": "package",
         "compile": {
-          "lib/net5.0/Google.Protobuf.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net5.0/Google.Protobuf.dll": {}
         },
         "runtime": {
-          "lib/net5.0/Google.Protobuf.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net5.0/Google.Protobuf.dll": {}
         }
       },
-      "Grpc.Core.Api/2.50.0-pre1": {
+      "Grpc.Core.Api/2.49.0": {
         "type": "package",
         "dependencies": {
           "System.Memory": "4.5.3"
         },
         "compile": {
-          "lib/netstandard2.1/Grpc.Core.Api.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.1/Grpc.Core.Api.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.1/Grpc.Core.Api.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/netstandard2.1/Grpc.Core.Api.dll": {}
         }
       },
-      "Grpc.Net.Client/2.50.0-pre1": {
+      "Grpc.Net.Client/2.49.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.Net.Common": "2.50.0-pre1",
+          "Grpc.Net.Common": "2.49.0",
           "Microsoft.Extensions.Logging.Abstractions": "3.0.3"
         },
         "compile": {
-          "lib/net6.0/Grpc.Net.Client.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Grpc.Net.Client.dll": {}
         },
         "runtime": {
-          "lib/net6.0/Grpc.Net.Client.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Grpc.Net.Client.dll": {}
         }
       },
-      "Grpc.Net.Common/2.50.0-pre1": {
+      "Grpc.Net.Common/2.49.0": {
         "type": "package",
         "dependencies": {
-          "Grpc.Core.Api": "2.50.0-pre1"
+          "Grpc.Core.Api": "2.49.0"
         },
         "compile": {
-          "lib/net6.0/Grpc.Net.Common.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Grpc.Net.Common.dll": {}
         },
         "runtime": {
-          "lib/net6.0/Grpc.Net.Common.dll": {
-            "related": ".pdb;.xml"
-          }
+          "lib/net6.0/Grpc.Net.Common.dll": {}
         }
       },
       "Grpc.Tools/2.50.0": {
@@ -74,14 +58,10 @@
       "Microsoft.Extensions.Logging.Abstractions/3.0.3": {
         "type": "package",
         "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "related": ".xml"
-          }
+          "lib/netstandard2.0/Microsoft.Extensions.Logging.Abstractions.dll": {}
         }
       },
       "System.Memory/4.5.3": {
@@ -129,15 +109,15 @@
         "lib/netstandard2.0/Google.Protobuf.xml"
       ]
     },
-    "Grpc.Core.Api/2.50.0-pre1": {
-      "sha512": "rorQmov10a6h0q0KHJuaiGpvS2v6vNCu4OTnd0fs+9+jt5EckHOq1CWIi6A4/ZwcPJwTZBTcF4ACBEashKpO/Q==",
+    "Grpc.Core.Api/2.49.0": {
+      "sha512": "6OTcSQ8iML+xzmELhH4anUZlNM3dHDKPFBsMLSdiT80LJaaZKxwZml/K9ZdfLIjSR/EzdMZzzU2Avbedz4N7BA==",
       "type": "package",
-      "path": "grpc.core.api/2.50.0-pre1",
+      "path": "grpc.core.api/2.49.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "grpc.core.api.2.50.0-pre1.nupkg.sha512",
+        "grpc.core.api.2.49.0.nupkg.sha512",
         "grpc.core.api.nuspec",
         "lib/net462/Grpc.Core.Api.dll",
         "lib/net462/Grpc.Core.Api.pdb",
@@ -154,15 +134,15 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Net.Client/2.50.0-pre1": {
-      "sha512": "MV3lOtlcgKIHDQ7n+sJYdXxqlgeq0fSjEF+H+UyMJBTjDHep62aEvgNR85arsWCe9++ksl2NQ0+sOu3mVTEkvQ==",
+    "Grpc.Net.Client/2.49.0": {
+      "sha512": "mLXxEJzqnRHseVzRCzSQznA7y8pcSStVbstLTUuQRulN7kREovh82ctNkGpkfwONi/DHoWscX9mJLiAmh0gjOQ==",
       "type": "package",
-      "path": "grpc.net.client/2.50.0-pre1",
+      "path": "grpc.net.client/2.49.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "grpc.net.client.2.50.0-pre1.nupkg.sha512",
+        "grpc.net.client.2.49.0.nupkg.sha512",
         "grpc.net.client.nuspec",
         "lib/net5.0/Grpc.Net.Client.dll",
         "lib/net5.0/Grpc.Net.Client.pdb",
@@ -182,14 +162,14 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Net.Common/2.50.0-pre1": {
-      "sha512": "EVpLIRAZv9qEW179wZp0LX/kNKxh2JbdksQyJCBIzMAS4YQ6iRsyXj1m77FeQyhMK5a3V4t0U7dzX9YZ/Y5H9w==",
+    "Grpc.Net.Common/2.49.0": {
+      "sha512": "G0TVTS8fjCk8b7td/E7C8/ssJPm3JnGVBKsveoj/89PIwIee72qkXG+tVn5c1gwTanEFPdyPoydna/bmU/NAaw==",
       "type": "package",
-      "path": "grpc.net.common/2.50.0-pre1",
+      "path": "grpc.net.common/2.49.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "grpc.net.common.2.50.0-pre1.nupkg.sha512",
+        "grpc.net.common.2.49.0.nupkg.sha512",
         "grpc.net.common.nuspec",
         "lib/net5.0/Grpc.Net.Common.dll",
         "lib/net5.0/Grpc.Net.Common.pdb",
@@ -303,24 +283,24 @@
     "net6.0": [
       "Domain >= 1.0.0",
       "Google.Protobuf >= 3.21.9",
-      "Grpc.Net.Client >= 2.50.0-pre1",
+      "Grpc.Net.Client >= 2.49.0",
       "Grpc.Tools >= 2.50.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\barte\\.nuget\\packages\\": {}
+    "C:\\Users\\Tomek\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Application\\Application.csproj",
+      "projectUniqueName": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Application\\Application.csproj",
       "projectName": "Application",
-      "projectPath": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Application\\Application.csproj",
-      "packagesPath": "C:\\Users\\barte\\.nuget\\packages\\",
-      "outputPath": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Application\\obj\\",
+      "projectPath": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Application\\Application.csproj",
+      "packagesPath": "C:\\Users\\Tomek\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\barte\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Tomek\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -332,8 +312,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Domain\\Domain.csproj": {
-              "projectPath": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Domain\\Domain.csproj"
+            "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Domain\\Domain.csproj"
             }
           }
         }
@@ -354,7 +334,7 @@
           },
           "Grpc.Net.Client": {
             "target": "Package",
-            "version": "[2.50.0-pre1, )"
+            "version": "[2.49.0, )"
           },
           "Grpc.Tools": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -379,7 +359,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\barte\\.dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Users\\Tomek\\.dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Application\\Application.csproj": {}
+    "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Application\\Application.csproj": {}
   },
   "projects": {
-    "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Application\\Application.csproj": {
+    "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\barte\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Application\\obj\\",
+        "projectPath": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\Tomek\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\barte\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Tomek\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -26,8 +26,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Domain\\Domain.csproj": {
-                "projectPath": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Domain\\Domain.csproj"
+              "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Domain\\Domain.csproj"
               }
             }
           }
@@ -48,7 +48,7 @@
             },
             "Grpc.Net.Client": {
               "target": "Package",
-              "version": "[2.50.0-pre1, )"
+              "version": "[2.49.0, )"
             },
             "Grpc.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -73,21 +73,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\barte\\.dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Tomek\\.dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Domain\\Domain.csproj": {
+    "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\barte\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\barte\\Desktop\\SEP3-WebAPI-master\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Tomek\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Tomek\\RiderProjects\\SEP3-WebAPI\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\barte\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Tomek\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -126,7 +126,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Users\\barte\\.dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Tomek\\.dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }

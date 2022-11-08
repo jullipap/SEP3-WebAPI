@@ -2,6 +2,6 @@
 
 public class Driver
 {
-    private string name { get; set; }
-    private Task <List<Ride>> rides { get; set; }
+    public string Name { get; set; }
+    public Task <List<Ride>> Rides { get; set; }
 }

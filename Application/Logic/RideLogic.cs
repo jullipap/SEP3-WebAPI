@@ -1,5 +1,6 @@
 ﻿using Application.DaoInterfaces;
 using Application.LogicInterfaces;
+using Domain.DTOs;
 using Domain.Models;
 
 namespace Application.Logic;
@@ -18,8 +19,8 @@ public class RideLogic : IRideLogic
         return rideDao.GetAllAsync();
     }
 
-    public Task<string> JoinRide(JoinRideDto dto)
+    public Task<string> JoinRide(Domain.DTOs.JoinRideDto dto)
     {
-        return rideDao.JoinRide(dto.RideId, dto.PassengerName, dto.PassengerPhone);
+        return rideDao.JoinRide(dto.RideId, dto.Name, dto.Phone);
     }
 }

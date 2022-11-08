@@ -2,5 +2,5 @@
 
 public class DateTime
 {
-    private long epoch { get; set; }
+    public long Epoch { get; set; }
 }

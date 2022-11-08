@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.LogicInterfaces;
+using Domain.DTOs;
+using Domain.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
 
@@ -18,8 +21,8 @@ public class RidesController : ControllerBase
     {
         try
         {
-            Ride created = await rideLogic.JoinRide(dto);
-            return Created("/", created);
+            string created = await rideLogic.JoinRide(dto);
+            return Ok(created);
         }
         catch (Exception e)
         {
@@ -34,7 +37,7 @@ public class RidesController : ControllerBase
     {
         try
         {
-            var rides = await rideLogic.getAllAsync();
+            var rides = await rideLogic.GetAllAsync();
             return Ok(rides);
         }
         catch (Exception e)

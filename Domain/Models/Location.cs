@@ -8,6 +8,4 @@ public class Location
     public string ZipCode { get; set; }
     public long CoordinatesX { get; set; }
     public long CoordinatesY { get; set; }
-
-    
 }

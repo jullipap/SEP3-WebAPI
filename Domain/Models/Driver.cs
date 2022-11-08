@@ -6,12 +6,11 @@ namespace Domain.Models;
 public class Driver
 {
     public string Name { get; set; }
-    public List<Ride> Rides;
-
+    public List<Ride> Rides { get; set; }
 
     public Driver(string name)
     {
-        this.Name = name;
+        Name = name;
         Rides = new List<Ride>();
     }
 
@@ -61,7 +60,7 @@ public class Driver
 
         for (int i = 0; i < Rides.Count; i++)
         {
-            if (epochStart.Equals(Rides[i].Date.Epoch))
+            if (epochStart.Equals(Rides[i].StartDate))
             {
                 ridesByDate.Add(Rides[i]);
             }

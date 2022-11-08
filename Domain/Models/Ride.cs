@@ -2,20 +2,28 @@
 
 public class Ride
 {
-    public long Id
+    public int Id
     {
         get;
         set;
     }
     public Location StartLocation { get; set; }
     public Location Destination { get; set; }
-    public DateTime Date { get; set; }
-    public string DriverName { get; set; }
-    
+    public DateTime StartDate { get; set; }
+    public string Driver { get; set; }
     
 
-    public bool isBetweenDates(DateTime value)
+    public Ride(Location destination, DateTime startDate, Location startLocation, int id, string driver )
     {
-        return Date.Epoch <= value.Epoch;
+        Destination = destination;
+        StartDate = startDate;
+        StartLocation = startLocation;
+        Id = id;
+        Driver = driver;
     }
+
+    // public bool isBetweenDates(DateTime value)
+    // {
+    //     return startDate.epoch <= value.epoch && value.epoch <= endDate.epoch;
+    // }
 }

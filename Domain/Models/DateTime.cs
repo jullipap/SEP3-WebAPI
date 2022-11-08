@@ -28,14 +28,27 @@ public class DateTime
         this.month = month;
         this.day = day;
     }
+    
+    public DateTime()
+    {
+        
+    }
 
     public DateTime(long epoch)
     {
         this.Epoch = epoch;
+        this.year = 0;
+        this.month = 0;
+        this.day = 0;
+        this.hour = 0;
+        this.minute = 0;
+        this.second = 0;
     }
 
-    public string getTimeString()
+    public string GetTimeString()
     {
+        epoch2string(Epoch);
+
         string s = "";
 
         if (hour < 10)
@@ -56,17 +69,18 @@ public class DateTime
 
     }
 
-    public string getDateString()
+    public string GetDateString()
     {
+        epoch2string(Epoch);
         return month + "/" + day + "/" + year;
     }
 
-    public string fullDateAndTimeString()
+    public string FullDateAndTimeString()
     {
-        return getTimeString() + getDateString();
+        return GetTimeString() + GetDateString();
     }
 
-    public string getFormattedString()
+    public string GetFormattedString()
     {
         return null;
         
@@ -74,5 +88,15 @@ public class DateTime
         //Therefore cannot compare those two dates. Only through the DateTime that is 
         //built in can you access various methods, such as "DayOfWeek", "Week number" etc.
         //This should be rethought on how to make, cuz I havent figured out a work around.
+    }
+    
+    private  void epoch2string(long epoch) {
+        System.DateTime date = new System.DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(epoch);
+        year = date.Year;
+        month = date.Month;
+        day = date.Day;
+        hour = date.Hour;
+        minute = date.Minute;
+        second = date.Second;
     }
 }

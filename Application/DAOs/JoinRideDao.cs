@@ -1,4 +1,7 @@
-﻿using Application.DaoInterfaces;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using Application.DaoInterfaces;
+using Domain.DTOs;
 using Domain.Models;
 using Grpc.Net.Client;
 using DateTime = Domain.Models.DateTime;

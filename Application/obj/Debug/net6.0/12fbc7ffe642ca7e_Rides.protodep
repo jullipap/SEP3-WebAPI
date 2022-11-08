@@ -1,2 +1,0 @@
-obj\Debug\net6.0\Protos/Rides.cs \
-obj\Debug\net6.0\Protos/RidesGrpc.cs: Protos/Rides.proto

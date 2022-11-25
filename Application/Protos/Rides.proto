@@ -20,20 +20,11 @@ message EpochTimelineMessage{
 }
 
 //thats what i added
-message DateTime{
-  uint64 epoch = 1;
-  int32 year = 2;
-  int32 month = 3;
-  int32 day = 4;
-  int32 hour = 5;
-  int32 minute = 6;
-  int32 second = 7;
-}
 
 message CreateRideDto{
   LocationMessage startLocation = 1;
   LocationMessage destination = 2;
-  DateTime startDate = 3;
+  int64 startDate = 3;
   string driver = 4;
   int32 capacity = 5;
 }
@@ -42,7 +33,7 @@ message Ride{
   int32 id = 1;
   LocationMessage startLocation = 2;
   LocationMessage destination = 3;
-  DateTime startDate = 4;
+  int64 startDate = 4;
   string driver = 5;
   int32 capacity = 6;
 }

@@ -10,7 +10,7 @@ option csharp_namespace = "Application";
 service Rides{
   rpc getRides(EpochTimelineMessage) returns (RidesCollection);
   rpc joinRide(JoinRideDto) returns (ConfirmationMessage);
-  rpc createRide(CreateRideDto) returns (Ride);
+  rpc createRide(CreateRideDto) returns (RideMessage);
 }
 
 //Probably not needed for now
@@ -29,7 +29,7 @@ message CreateRideDto{
   int32 capacity = 5;
 }
 
-message Ride{
+message RideMessage{
   int32 id = 1;
   LocationMessage startLocation = 2;
   LocationMessage destination = 3;
@@ -47,9 +47,11 @@ message RidesCollection{
     LocationMessage endLocation = 3;
     int64 startTime = 4;
     DriverMessage driver = 5;
+    int32 capacity = 6;
+
 
     //imo that's needed although not included in uml
-    int32 id = 6;
+    int32 id = 7;
   }
 }
 

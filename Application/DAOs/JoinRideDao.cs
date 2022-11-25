@@ -47,7 +47,7 @@ public class JoinRideDao : IRideDao
    
            DateTime dateTime = new DateTime(rideMessage.StartTime) ;
            
-           rides.Add(new Ride(endLocation,dateTime,startLocation,rideMessage.Id,rideMessage.Driver.Name));
+           rides.Add(new Ride(endLocation,dateTime,startLocation,rideMessage.Id,rideMessage.Driver.Name, rideMessage.Capacity));
        }
    
        return rides;

@@ -8,5 +8,5 @@ public interface IRideLogic
     Task<List<Ride>> GetAllAsync();
     Task<string> JoinRide(Domain.DTOs.JoinRideDto dto);
 
-    Task<Ride> createRide(RideCreationDto dto);
+    Task<Ride> CreateRide(RideCreationDto dto);
 }

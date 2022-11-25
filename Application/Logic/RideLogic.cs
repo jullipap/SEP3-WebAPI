@@ -24,7 +24,7 @@ public class RideLogic : IRideLogic
         return rideDao.JoinRide(dto.RideId, dto.Name, dto.Phone);
     }
 
-    public Task<Ride> createRide(RideCreationDto dto)
+    public Task<Ride> CreateRide(RideCreationDto dto)
     {
         //TODO @bartoszwiacek
         throw new NotImplementedException();

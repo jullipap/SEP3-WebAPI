@@ -52,7 +52,7 @@ public class RidesController : ControllerBase
     {
         try
         {
-            var ride = await rideLogic.createRide(dto);
+            var ride = await rideLogic.CreateRide(dto);
             //wanted to do Created(ride) but doesn't accept the parameter, we could do:
             //Created("rides/${id}") but we don't have that one yet
             return Ok(ride);

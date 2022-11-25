@@ -10,6 +10,7 @@ option csharp_namespace = "Application";
 service Rides{
   rpc getRides(EpochTimelineMessage) returns (RidesCollection);
   rpc joinRide(JoinRideDto) returns (ConfirmationMessage);
+  rpc createRide(CreateRideDto) returns (Ride);
 }
 
 //Probably not needed for now
@@ -18,7 +19,35 @@ message EpochTimelineMessage{
   optional int64 epochUpperBound = 2;
 }
 
+//thats what i added
+message DateTime{
+  uint64 epoch = 1;
+  int32 year = 2;
+  int32 month = 3;
+  int32 day = 4;
+  int32 hour = 5;
+  int32 minute = 6;
+  int32 second = 7;
+}
 
+message CreateRideDto{
+  LocationMessage startLocation = 1;
+  LocationMessage destination = 2;
+  DateTime startDate = 3;
+  string driver = 4;
+  int32 capacity = 5;
+}
+
+message Ride{
+  int32 id = 1;
+  LocationMessage startLocation = 2;
+  LocationMessage destination = 3;
+  DateTime startDate = 4;
+  string driver = 5;
+  int32 capacity = 6;
+}
+
+//thats it thx
 
 message RidesCollection{
   repeated RideMessage rides = 1;

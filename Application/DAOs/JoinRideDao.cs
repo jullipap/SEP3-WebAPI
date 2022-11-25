@@ -27,14 +27,22 @@ public class JoinRideDao : IRideDao
        {
            Location startLocation = new Location()
            {
-               Country = rideMessage.StartLocation.Country, City = rideMessage.StartLocation.City, CoordinatesX = rideMessage.StartLocation.CoordinateX,
-               CoordinatesY = rideMessage.StartLocation.CoordinateY, StreetName = rideMessage.StartLocation.Street, ZipCode = rideMessage.StartLocation.Zipcode
+               Country = rideMessage.StartLocation.Country, 
+               City = rideMessage.StartLocation.City, 
+               CoordinatesX = rideMessage.StartLocation.CoordinateX,
+               CoordinatesY = rideMessage.StartLocation.CoordinateY, 
+               StreetName = rideMessage.StartLocation.Street, 
+               ZipCode = rideMessage.StartLocation.Zipcode
            };
            
            Location endLocation = new Location()
            {
-               Country = rideMessage.EndLocation.Country, City = rideMessage.EndLocation.City, CoordinatesX = rideMessage.EndLocation.CoordinateX,
-               CoordinatesY = rideMessage.EndLocation.CoordinateY, StreetName = rideMessage.EndLocation.Street, ZipCode = rideMessage.EndLocation.Zipcode
+               Country = rideMessage.EndLocation.Country,
+               City = rideMessage.EndLocation.City,
+               CoordinatesX = rideMessage.EndLocation.CoordinateX,
+               CoordinatesY = rideMessage.EndLocation.CoordinateY, 
+               StreetName = rideMessage.EndLocation.Street, 
+               ZipCode = rideMessage.EndLocation.Zipcode
            };
    
            DateTime dateTime = new DateTime(rideMessage.StartTime) ;

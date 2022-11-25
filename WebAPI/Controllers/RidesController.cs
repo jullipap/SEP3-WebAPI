@@ -47,4 +47,21 @@ public class RidesController : ControllerBase
         }
     }
 
+    [HttpPost("Create")]
+    public async Task<ActionResult<Ride>> createRide([FromBody] RideCreationDto dto)
+    {
+        try
+        {
+            var ride = await rideLogic.createRide(dto);
+            //wanted to do Created(ride) but doesn't accept the parameter, we could do:
+            //Created("rides/${id}") but we don't have that one yet
+            return Ok(ride);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
+
 }

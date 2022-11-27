@@ -23,6 +23,8 @@ public class Ride
         Driver = driver;
         Capacity = capacity;
     }
+    
+    public Ride(){}
 
     // public bool isBetweenDates(DateTime value)
     // {

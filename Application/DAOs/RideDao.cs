@@ -37,15 +37,15 @@ public class JoinRideDao : IRideDao
            
            Location endLocation = new Location()
            {
-               Country = rideMessage.EndLocation.Country,
-               City = rideMessage.EndLocation.City,
-               CoordinatesX = rideMessage.EndLocation.CoordinateX,
-               CoordinatesY = rideMessage.EndLocation.CoordinateY, 
-               StreetName = rideMessage.EndLocation.Street, 
-               ZipCode = rideMessage.EndLocation.Zipcode
+               Country = rideMessage.Destination.Country,
+               City = rideMessage.Destination.City,
+               CoordinatesX = rideMessage.Destination.CoordinateX,
+               CoordinatesY = rideMessage.Destination.CoordinateY, 
+               StreetName = rideMessage.Destination.Street, 
+               ZipCode = rideMessage.Destination.Zipcode
            };
    
-           DateTime dateTime = new DateTime(rideMessage.StartTime) ;
+           DateTime dateTime = new DateTime(rideMessage.StartDate) ;
            
            rides.Add(new Ride(endLocation,dateTime,startLocation,rideMessage.Id,rideMessage.Driver.Name, rideMessage.Capacity));
        }
@@ -55,7 +55,7 @@ public class JoinRideDao : IRideDao
 
     public async Task<string> JoinRide(int Id, string name, string phone)
     {
-        JoinRideDto joinRideDto = new JoinRideDto
+        JoinRideMessage joinRideDto = new JoinRideMessage()
         {
             RideId = Id,
             PassengerName = name,

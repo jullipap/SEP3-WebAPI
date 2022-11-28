@@ -44,7 +44,7 @@ public class JoinRideDao : IRideDao
                StreetName = rideMessage.Destination.Street, 
                ZipCode = rideMessage.Destination.Zipcode
            };
-   
+
            DateTime dateTime = new DateTime(rideMessage.StartDate) ;
            
            rides.Add(new Ride(endLocation,dateTime,startLocation,rideMessage.Id,rideMessage.Driver.Name, rideMessage.Capacity));
@@ -127,22 +127,4 @@ public class JoinRideDao : IRideDao
         };
         return ride;
     }
-
-   //  public async Task<string> JoinRide(JoinRideDto dto)
-   // {
-   //     JoinRideDto joinRideDto = new JoinRideDto
-   //     {
-   //         RideId = dto.RideId,
-   //         PassengerName = dto.PassengerName,
-   //         PassengerPhone = dto.PassengerPhone
-   //     };
-   //
-   //     var reply = await client.joinRideAsync(joinRideDto);
-   //     return reply.ConfirmationMessage_;
-   // }
-   
-   //sorry i messed up sth with interfaces 
-   //(I had DTO objects in IRideDao interface) (Yes, I've done it again)
-   //I think now it should be correct
-   //but just in case I'm gonna leave it here
 }

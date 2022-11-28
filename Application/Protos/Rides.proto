@@ -7,6 +7,7 @@ service Rides{
   rpc getRides(EpochTimelineMessage) returns (RidesCollection);
   rpc joinRide(JoinRideMessage) returns (ConfirmationMessage);
   rpc createRide(CreateRideMessage) returns (RideMessage);
+  rpc acceptPassenger(AcceptMessage) returns (ReservationMessage);
 }
 
 //Probably not needed for now
@@ -15,7 +16,18 @@ message EpochTimelineMessage{
   optional int64 epochUpperBound = 2;
 }
 
-//thats what i added
+message AcceptMessage{
+  int32 reservationId = 1;
+  bool didAccept = 2;
+}
+
+message ReservationMessage{
+    int32 rideId = 1;
+    string name = 2;
+    string phone = 3;
+    bool didAccept = 4;
+    //Maybe isAccepted?
+}
 
 message CreateRideMessage{
   LocationMessage startLocation = 1;
@@ -33,8 +45,6 @@ message RideMessage{
   DriverMessage driver = 5;
   int32 capacity = 6;
 }
-
-//thats it thx
 
 message RidesCollection{
   repeated RideMessage rides = 1;

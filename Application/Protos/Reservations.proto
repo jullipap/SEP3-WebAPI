@@ -1,0 +1,35 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Application";
+
+service Reservations{
+  rpc acceptPassenger(AcceptMessage) returns (ReservationMessage);
+  rpc getAllReservationsToAccept(NullMessage) returns (ReservationsToAcceptCollection);
+}
+
+message AcceptMessage{
+  int32 reservationId = 1;
+  bool didAccept = 2;
+}
+
+message BoolValue
+{
+  bool value = 1;
+}
+
+message ReservationMessage{
+  int32 rideId = 1;
+  string name = 2;
+  string phone = 3;
+  optional BoolValue didAccept = 4;
+  int32 id = 5;
+  //Maybe isAccepted?
+}
+
+message NullMessage{
+  
+}
+
+message ReservationsToAcceptCollection{
+  repeated ReservationMessage reservationMessages = 1;
+}

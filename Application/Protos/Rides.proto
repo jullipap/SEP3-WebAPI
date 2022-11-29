@@ -1,15 +1,12 @@
 ﻿syntax = "proto3";
 
-//option java_multiple_files= true;
-//option java_package= "via.sep3.databaseserver.protobuff";
-
 option csharp_namespace = "Application";
 
-//package application;//addded
 
 service Rides{
   rpc getRides(EpochTimelineMessage) returns (RidesCollection);
-  rpc joinRide(JoinRideDto) returns (ConfirmationMessage);
+  rpc joinRide(JoinRideMessage) returns (ConfirmationMessage);
+  rpc createRide(CreateRideMessage) returns (RideMessage);
 }
 
 //Probably not needed for now
@@ -19,18 +16,25 @@ message EpochTimelineMessage{
 }
 
 
+message CreateRideMessage{
+  LocationMessage startLocation = 1;
+  LocationMessage destination = 2;
+  int64 startDate = 3;
+  string driver = 4;
+  int32 capacity = 5;
+}
+
+message RideMessage{
+  int32 id = 1;
+  LocationMessage startLocation = 2;
+  LocationMessage destination = 3;
+  int64 startDate = 4;
+  DriverMessage driver = 5;
+  int32 capacity = 6;
+}
 
 message RidesCollection{
   repeated RideMessage rides = 1;
-  message RideMessage {
-    LocationMessage startLocation = 2;
-    LocationMessage endLocation = 3;
-    int64 startTime = 4;
-    DriverMessage driver = 5;
-
-    //imo that's needed although not included in uml
-    int32 id = 6;
-  }
 }
 
 message LocationMessage{
@@ -50,7 +54,7 @@ message DriverMessage{
   int32 id = 3;
 }
 
-message JoinRideDto{
+message JoinRideMessage{
   int32 rideId = 1;
   string passengerName = 2;
   string passengerPhone = 3;

@@ -13,7 +13,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IRideDao, JoinRideDao>();
+builder.Services.AddScoped<IRideDao, RideDao>();
+builder.Services.AddScoped<IReservationDao, ReservationDao>();
 builder.Services.AddScoped<IRideLogic, RideLogic>();
 builder.Services.AddScoped<IReservationLogic, ReservationLogic>();
 // add addscoped when reservationdao finished by bartek

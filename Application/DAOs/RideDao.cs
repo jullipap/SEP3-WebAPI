@@ -8,13 +8,13 @@ using DateTime = Domain.Models.DateTime;
 
 namespace Application.DAOs;
 
-public class JoinRideDao : IRideDao
+public class RideDao : IRideDao
 //Class name needs to be changed 
 {
 
     private Rides.RidesClient client;
 
-    public JoinRideDao()
+    public RideDao()
     {
         var channel = GrpcChannel.ForAddress("http://localhost:5434");
         client = new Rides.RidesClient(channel);

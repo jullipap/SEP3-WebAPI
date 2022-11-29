@@ -9,18 +9,19 @@ using DateTime = Domain.Models.DateTime;
 namespace Application.DAOs;
 
 public class JoinRideDao : IRideDao
+//Class name needs to be changed 
 {
 
     private Rides.RidesClient client;
-    
+
     public JoinRideDao()
     {
-         var channel = GrpcChannel.ForAddress("http://localhost:5434");
+        var channel = GrpcChannel.ForAddress("http://localhost:5434");
         client = new Rides.RidesClient(channel);
     }
 
     public async Task<List<Ride>> GetAllAsync()
-   {
+    {
        var reply = await client.getRidesAsync(new EpochTimelineMessage {});
        List<Ride> rides = new List<Ride>();
        foreach (var rideMessage in reply.Rides)

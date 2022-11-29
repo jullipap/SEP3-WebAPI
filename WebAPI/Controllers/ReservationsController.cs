@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebAPI.Controllers;
 [ApiController]
 [Route("[controller]")]
-public class ReservationController : ControllerBase
+public class ReservationsController : ControllerBase
 {
     private readonly IReservationLogic reservationLogic;
 
-    public ReservationController(IReservationLogic reservationLogic)
+    public ReservationsController(IReservationLogic reservationLogic)
     {
         this.reservationLogic = reservationLogic;
     }

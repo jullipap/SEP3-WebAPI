@@ -16,7 +16,7 @@ public class ReservationLogic : IReservationLogic
 
     public Task<Reservation> AcceptPassenger(AcceptReservationDto acceptDto)
     {
-        return reservationDao.AcceptPassenger(acceptDto.RideId, acceptDto.DidAccept);
+        return reservationDao.AcceptPassenger(acceptDto.ReservationId, acceptDto.DidAccept);
     }
 
     public Task<ICollection<Reservation>> GetReservationToAccept()

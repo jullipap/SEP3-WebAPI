@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option csharp_namespace = "Application";
+
+
+service User{
+  rpc createAccount(CreateAccountMessage) returns (UserMessage);
+  rpc login(LoginMessage) returns (BoolMessage);
+  rpc getDriver(DriverMessage) returns (UserMessage);
+}
+
+message CreateAccountMessage{
+  string name = 1;
+  int32 licenseNo = 2;
+  int32 phoneNumber = 3;
+  string email = 4;
+  string password = 5;
+}
+
+message UserMessage{
+  //not sure what we actually need on client side
+  string name = 1;
+  int32 phoneNumber = 2;
+  string email = 3;
+}
+
+message LoginMessage{
+  string email = 1;
+  string password = 2;
+}
+
+message BoolMessage{
+  bool status = 1;
+  int32 driverId = 2;
+}
+
+message DriverMessage{
+  int32 driverId = 1;
+}

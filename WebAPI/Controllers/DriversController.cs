@@ -23,7 +23,7 @@ public class DriversController : ControllerBase
         this.driverLogic = driverLogic;
     }
     
-    [HttpPost]
+    [HttpPost, Route("register")]
     public async Task<ActionResult<Driver>> Register([FromBody]RegisterDto dto)
     {
         try
@@ -48,6 +48,21 @@ public class DriversController : ControllerBase
             string token = GenerateJwt(user);
             return Ok(token);
 
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
+    
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<Driver>> GetDriverByIdAsync([FromRoute] int id)
+    {
+        try
+        {
+            Driver driver = await driverLogic.GetDriverByIdAsync(id);
+            return Ok(driver);
         }
         catch (Exception e)
         {
@@ -88,6 +103,7 @@ public class DriversController : ControllerBase
             new Claim(ClaimTypes.Name, driver.Name),
             new Claim("Id", driver.Id.ToString())
             //I guess there will be an Id added in the Driver's class
+            // AWESOME GUESS!!!
         };
 
         return claims.ToList();

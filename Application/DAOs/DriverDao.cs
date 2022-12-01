@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Application.DaoInterfaces;
+using Domain.Models;
 using Grpc.Net.Client;
 
 namespace Application.DAOs;
@@ -13,7 +14,7 @@ public class DriverDao : IDriverDao
         client = new User.UserClient(channel);
     }
 
-    public override async Task<Driver> Register(string name, int phone, string email, string encryptedPassword, int licenseNo)
+    public  async Task<Driver> Register(string name, int phone, string email, string encryptedPassword, int licenseNo)
     {
         CreateAccountMessage createAccountMessage = new CreateAccountMessage() 
         { 
@@ -35,7 +36,7 @@ public class DriverDao : IDriverDao
         return driver;
     }
 
-    public override async Task<Driver> Login(string email, string password)
+    public  async Task<Driver> Login(string email, string password)
     {
         LoginMessage loginMessage = new LoginMessage() { Email = email, Password = password};
         var reply = await client.loginAsync(loginMessage);
@@ -50,7 +51,7 @@ public class DriverDao : IDriverDao
         return driver;
     }
 
-    public override async Task<Driver> GetDriverByIdAsync(int id)
+    public  async Task<Driver> GetDriverByIdAsync(int id)
     {
         DriverMessageId driverMessageId = new DriverMessageId() { DriverId = id };
         var reply = await client.getDriverAsync(driverMessageId);

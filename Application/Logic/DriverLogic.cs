@@ -1,6 +1,9 @@
-﻿using System.Xml;
+﻿using System.Security.Cryptography;
+using System.Text;
+using System.Xml;
 using Application.DaoInterfaces;
 using Application.LogicInterfaces;
+using Domain.DTOs;
 using Domain.Models;
 
 namespace Application.Logic;
@@ -16,11 +19,32 @@ public class DriverLogic : IDriverLogic
 
     public Task<Driver> Register(RegisterDto dto)
     {
-        return driverDao.Register(dto.name, dto.phone, dto.email, dto.password, dto.licenseNo);
+        string encryptedPassword = GetHashString(dto.Password);
+        return driverDao.Register(dto.Name, Int32.Parse( dto.Phone), dto.Email, encryptedPassword, Int32.Parse(dto.LicenseNumber));
     }
 
     public Task<Driver> Login(LoginDto dto)
     {
-        return driverDao.Login(dto.name, dto.password);
+        return driverDao.Login(dto.Email, dto.Password);
+    }
+
+    public Task<Driver> GetDriverByIdAsync(int id)
+    {
+        return driverDao.GetDriverByIdAsync(id);
+    }
+
+    private static byte[] GetHash(string inputString)
+    {
+        using (HashAlgorithm algorithm = SHA256.Create())
+            return algorithm.ComputeHash(Encoding.UTF8.GetBytes(inputString));
+    }
+
+    private static string GetHashString(string inputString)
+    {
+        StringBuilder sb = new StringBuilder();
+        foreach (byte b in GetHash(inputString))
+            sb.Append(b.ToString("X2"));
+
+        return sb.ToString();
     }
 }

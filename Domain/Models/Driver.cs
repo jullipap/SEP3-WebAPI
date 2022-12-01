@@ -21,6 +21,11 @@ public class Driver
         Rides = new List<Ride>();
     }
 
+    public Driver()
+    {
+        
+    }
+
     public void addRide(Ride ride)
     {
         Rides.Add(ride);

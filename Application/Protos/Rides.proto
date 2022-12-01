@@ -20,7 +20,7 @@ message CreateRideMessage{
   LocationMessage startLocation = 1;
   LocationMessage destination = 2;
   int64 startDate = 3;
-  string driver = 4;
+  int32 driverId = 4;
   int32 capacity = 5;
 }
 

@@ -6,7 +6,7 @@ option csharp_namespace = "Application";
 service User{
   rpc createAccount(CreateAccountMessage) returns (UserMessage);
   rpc login(LoginMessage) returns (BoolMessage);
-  rpc getDriver(DriverMessage) returns (UserMessage);
+  rpc getDriver(DriverMessageId) returns (UserMessage);
 }
 
 message CreateAccountMessage{
@@ -34,6 +34,6 @@ message BoolMessage{
   int32 driverId = 2;
 }
 
-message DriverMessage{
+message DriverMessageId{
   int32 driverId = 1;
 }

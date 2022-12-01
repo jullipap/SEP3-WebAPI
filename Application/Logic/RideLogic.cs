@@ -42,6 +42,6 @@ public class RideLogic : IRideLogic
 
         DateTime date = new DateTime(month, day, year, hour, minutes, 0);
         return rideDao.CreateRide(createRideDto.StartLocation, createRideDto.Destination, date,
-            createRideDto.DriversName, createRideDto.Capacity);
+            createRideDto.DriverId, createRideDto.Capacity);
     }
 }

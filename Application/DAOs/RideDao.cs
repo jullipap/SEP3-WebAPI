@@ -48,7 +48,7 @@ public class RideDao : IRideDao
 
            DateTime dateTime = new DateTime(rideMessage.StartDate) ;
            
-           rides.Add(new Ride(endLocation,dateTime,startLocation,rideMessage.Id,rideMessage.Driver.Name, rideMessage.Capacity));
+           rides.Add(new Ride(endLocation,dateTime,startLocation,rideMessage.Id,rideMessage.Driver.Id, rideMessage.Capacity));
        }
    
        return rides;
@@ -67,7 +67,7 @@ public class RideDao : IRideDao
         return reply.ConfirmationMessage_;
     }
     
-    public async Task<Ride> CreateRide(Location startLocation, Location destination, DateTime startDate, string driver, int capacity)
+    public async Task<Ride> CreateRide(Location startLocation, Location destination, DateTime startDate, int driverId, int capacity)
     {
         LocationMessage destinationTemp = new LocationMessage()
         {
@@ -93,7 +93,7 @@ public class RideDao : IRideDao
         {
             Capacity = capacity,
             Destination = destinationTemp,
-            Driver = driver,
+            DriverId = driverId,
             StartDate = startDate.Epoch,
             StartLocation = startLocationTemp
         };
@@ -121,7 +121,7 @@ public class RideDao : IRideDao
         {
             Destination = destinationFinal,
             Capacity = capacity,
-            Driver = driver,
+            DriverId = driverId,
             Id = reply.Id,
             StartDate = new DateTime(reply.StartDate),
             StartLocation = startLocationFinal

@@ -8,6 +8,7 @@ service User{
   rpc getDriver(GetDriverMessage) returns (UserMessage);
   
   rpc createAccountPassenger(CreateAccountMessagePassenger) returns (UserMessage);
+  rpc loginPassenger(LoginMessage) returns (BoolPassengerMessage);
   rpc getPassenger(GetPassengerMessage) returns(UserMessage);
   //Maybe for passenger we could use createAccountMessage as well but just add ? after licenseNo ?
 }
@@ -42,6 +43,11 @@ message LoginMessage{
 message BoolMessage{
   bool status = 1;
   int32 driverId = 2;
+}
+
+message BoolPassengerMessage{
+  bool status = 1;
+  int32 passengerId = 2;
 }
 
 message GetDriverMessage{

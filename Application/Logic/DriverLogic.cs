@@ -25,7 +25,8 @@ public class DriverLogic : IDriverLogic
 
     public Task<Driver> Login(LoginDto dto)
     {
-        return driverDao.Login(dto.Email, dto.Password);
+        string encryptedPassword = GetHashString(dto.Password);
+        return driverDao.Login(dto.Email, encryptedPassword);
     }
 
     public Task<Driver> GetDriverByIdAsync(int id)

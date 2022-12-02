@@ -5,28 +5,32 @@ namespace Domain.Models;
 public class DateTime
 {
     public long Epoch { get; set; }
-    private int year { get; set; }
-    private int month { get; set; }
-    private int day { get; set; }
-    private int hour { get; set; }
-    private int minute { get; set; }
-    private int second { get; set; }
+    private int Year { get; set; }
+    private int Month { get; set; }
+    private int Day { get; set; }
+    private int Hour { get; set; }
+    private int Minute { get; set; }
+    private int Second { get; set; }
 
     public DateTime(int month, int day, int year, int hour, int minute, int second)
     {
-        this.year = year;
-        this.month = month;
-        this.day = day;
-        this.hour = hour;
-        this.minute = minute;
-        this.second = second;
+        this.Year = year;
+        this.Month = month;
+        this.Day = day;
+        this.Hour = hour;
+        this.Minute = minute;
+        this.Second = second;
+        
+        var dateTime = new System.DateTime(Year, Month, Day, Hour, Minute, Second, DateTimeKind.Utc);
+        var dateWithOffset = new DateTimeOffset(dateTime).ToUniversalTime();
+        Epoch = dateWithOffset.ToUnixTimeSeconds();
     }
 
     public DateTime(int month, int day, int year)
     {
-        this.year = year;
-        this.month = month;
-        this.day = day;
+        this.Year = year;
+        this.Month = month;
+        this.Day = day;
     }
     
     public DateTime()
@@ -37,12 +41,12 @@ public class DateTime
     public DateTime(long epoch)
     {
         this.Epoch = epoch;
-        this.year = 0;
-        this.month = 0;
-        this.day = 0;
-        this.hour = 0;
-        this.minute = 0;
-        this.second = 0;
+        this.Year = 0;
+        this.Month = 0;
+        this.Day = 0;
+        this.Hour = 0;
+        this.Minute = 0;
+        this.Second = 0;
     }
 
     public string GetTimeString()
@@ -51,19 +55,19 @@ public class DateTime
 
         string s = "";
 
-        if (hour < 10)
+        if (Hour < 10)
         {
             s += "0";
         }
 
-        s += hour;
+        s += Hour;
         s += ":";
-        if (minute < 10)
+        if (Minute < 10)
         {
             s += "0";
         }
 
-        s += minute;
+        s += Minute;
 
         return s + " ";
 
@@ -72,7 +76,7 @@ public class DateTime
     public string GetDateString()
     {
         epoch2string(Epoch);
-        return month + "/" + day + "/" + year;
+        return Month + "/" + Day + "/" + Year;
     }
 
     public string FullDateAndTimeString()
@@ -92,11 +96,11 @@ public class DateTime
     
     private  void epoch2string(long epoch) {
         System.DateTime date = new System.DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(epoch);
-        year = date.Year;
-        month = date.Month;
-        day = date.Day;
-        hour = date.Hour;
-        minute = date.Minute;
-        second = date.Second;
+        Year = date.Year;
+        Month = date.Month;
+        Day = date.Day;
+        Hour = date.Hour;
+        Minute = date.Minute;
+        Second = date.Second;
     }
 }

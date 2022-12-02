@@ -18,8 +18,9 @@ public class DriversController : ControllerBase
     private readonly IConfiguration config;
     private readonly IDriverLogic driverLogic;
 
-    public DriversController(IDriverLogic driverLogic)
+    public DriversController(IConfiguration config,IDriverLogic driverLogic)
     {
+        this.config = config;
         this.driverLogic = driverLogic;
     }
     
@@ -45,6 +46,7 @@ public class DriversController : ControllerBase
         try
         {
             var user = await driverLogic.Login(dto);
+            Console.WriteLine(user.Name);
             string token = GenerateJwt(user);
             return Ok(token);
 
@@ -74,10 +76,9 @@ public class DriversController : ControllerBase
     private string GenerateJwt(Driver driver)
     {
         List<Claim> claims = GenerateClaims(driver);
-    
         SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
         SigningCredentials signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
-    
+        
         JwtHeader header = new JwtHeader(signIn);
     
         JwtPayload payload = new JwtPayload(
@@ -100,7 +101,6 @@ public class DriversController : ControllerBase
             new Claim(JwtRegisteredClaimNames.Sub, config["Jwt:Subject"]),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-            new Claim(ClaimTypes.Name, driver.Name),
             new Claim("Id", driver.Id.ToString())
             //I guess there will be an Id added in the Driver's class
             // AWESOME GUESS!!!

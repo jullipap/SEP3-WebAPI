@@ -7,6 +7,7 @@ service Rides{
   rpc getRides(EpochTimelineMessage) returns (RidesCollection);
   rpc joinRide(JoinRideMessage) returns (ConfirmationMessage);
   rpc createRide(CreateRideMessage) returns (RideMessage);
+  rpc getRidesBetweenDates(EpochTimelineMessage) returns (RidesCollection); // not sure if we need it
 }
 
 //Probably not needed for now

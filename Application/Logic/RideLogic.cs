@@ -15,9 +15,37 @@ public class RideLogic : IRideLogic
         this.rideDao = rideDao;
     }
     
-    public Task<List<Ride>> GetAllAsync()
+    public Task<List<Ride>> GetAllAsync(string? startDate, string? endDate)
     {
-        return rideDao.GetAllAsync();
+        DateTime? startDateTime = null;
+        if (startDate != null)
+        {
+            string[] startDateArr = startDate.Split("/");
+        
+            int startYear = Int32.Parse(startDateArr[2]);
+            int startMonth = Int32.Parse(startDateArr[1]);
+            int startDay = Int32.Parse(startDateArr[0]);
+
+             startDateTime = new DateTime(startDay, startMonth, startYear,0,0,0);
+
+        }
+
+        DateTime? endDateTime = null;
+
+        if (endDate != null)
+        {
+            string[] endDateArr = endDate.Split("/");
+        
+            int endYear = Int32.Parse(endDateArr[2]);
+            int endMonth = Int32.Parse(endDateArr[1]);
+            int endDay = Int32.Parse(endDateArr[0]);
+
+             endDateTime  = new DateTime(endDay, endMonth, endYear,23,59,59);
+        }
+        
+        
+        return rideDao.GetAllAsync(startDateTime, endDateTime);
+        
     }
 
     public Task<string> JoinRide(Domain.DTOs.JoinRideDto dto)

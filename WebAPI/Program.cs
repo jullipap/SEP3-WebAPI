@@ -18,8 +18,8 @@ builder.Services.AddScoped<IReservationDao, ReservationDao>();
 builder.Services.AddScoped<IRideLogic, RideLogic>();
 builder.Services.AddScoped<IReservationLogic, ReservationLogic>();
 builder.Services.AddScoped<IReservationDao, ReservationDao>();
-builder.Services.AddScoped<IDriverLogic, DriverLogic>();
-builder.Services.AddScoped<IDriverDao, DriverDao>();
+builder.Services.AddScoped<IUserLogic, UserLogic>();
+builder.Services.AddScoped<IUserDao, UserDao>();
 // add addscoped when reservationdao finished by bartek
 
 

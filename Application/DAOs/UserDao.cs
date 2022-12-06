@@ -4,17 +4,17 @@ using Grpc.Net.Client;
 
 namespace Application.DAOs;
 // its red cause there is no dao interface yet 
-public class DriverDao : IDriverDao
+public class UserDao : IUserDao
 {
-    private User.UserClient client;
+    private Users.UsersClient client;
 
-    public DriverDao()
+    public UserDao()
     {
         var channel = GrpcChannel.ForAddress("http://localhost:5434");
-        client = new User.UserClient(channel);
+        client = new Users.UsersClient(channel);
     }
 
-    public  async Task<Driver> Register(string name, int phone, string email, string encryptedPassword, int licenseNo)
+    public  async Task<User> Register(string name, int phone, string email, string encryptedPassword, int licenseNo)
     {
         CreateAccountMessage createAccountMessage = new CreateAccountMessage() 
         { 
@@ -27,16 +27,16 @@ public class DriverDao : IDriverDao
         };
         var reply = await client.createAccountAsync(createAccountMessage);
         
-        Driver driver = new Driver()
+        User user = new User()
         {
             Name = reply.Name,
             Email = reply.Email,
             Phone = reply.PhoneNumber
         };
-        return driver;
+        return user;
     }
 
-    public  async Task<Driver> Login(string email, string password)
+    public  async Task<User> Login(string email, string password)
     {
         LoginMessage loginMessage = new LoginMessage() { Email = email, Password = password};
         var reply = await client.loginAsync(loginMessage);
@@ -44,23 +44,28 @@ public class DriverDao : IDriverDao
         {
             throw new Exception("Incorrect data, try to log in again");
         }
-        Driver driver = new Driver()
+        User user = new User()
         {
             Id = reply.DriverId,
         };
-        return driver;
+        return user;
     }
 
-    public  async Task<Driver> GetDriverByIdAsync(int id)
+    public  async Task<User> GetUserByIdAsync(int id)
     {
-        DriverMessageId driverMessageId = new DriverMessageId() { DriverId = id };
-        var reply = await client.getDriverAsync(driverMessageId);
-        Driver driver = new Driver()
+        UsersMessageId userMessageId = new UsersMessageId() { DriverId = id };
+        var reply = await client.getDriverAsync(userMessageId);
+        User user = new User()
         {
             Name = reply.Name,
             Email = reply.Email,
             Phone = reply.PhoneNumber
         };
-        return driver;
+        return user;
+    }
+
+    public Task<User> UpdateTheLicenseNo(int id, int licenseNo)
+    {
+        throw new NotImplementedException();
     }
 }

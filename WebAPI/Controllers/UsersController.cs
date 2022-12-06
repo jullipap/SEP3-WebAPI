@@ -1,6 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Application;
 using Microsoft.AspNetCore.Mvc;
 using Application.LogicInterfaces;
 using Domain.DTOs;
@@ -8,30 +9,30 @@ using Domain.Models;
 using Microsoft.IdentityModel.Tokens;
 using DateTime = System.DateTime;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
+using User = Domain.Models.User;
 
 namespace WebAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class DriversController : ControllerBase
+public class UsersController : ControllerBase
 {
     private readonly IConfiguration config;
-    private readonly IDriverLogic driverLogic;
+    private readonly IUserLogic userLogic;
 
-    public DriversController(IConfiguration config,IDriverLogic driverLogic)
+    public UsersController(IConfiguration config,IUserLogic userLogic)
     {
         this.config = config;
-        this.driverLogic = driverLogic;
+        this.userLogic = userLogic;
     }
     
     [HttpPost, Route("register")]
-    public async Task<ActionResult<Driver>> Register([FromBody]RegisterDto dto)
+    public async Task<ActionResult<User>> Register([FromBody]RegisterDto dto)
     {
         try
         {
-            Driver driver = await driverLogic.Register(dto);
-            return Ok(driver);
-            // return Created($"/user/{driver.Id}", driver);
+            User user = await userLogic.Register(dto);
+            return Ok(user);
         }
         catch (Exception e)
         {
@@ -41,12 +42,11 @@ public class DriversController : ControllerBase
     }
     
     [HttpPost, Route("login")]
-    public async Task<ActionResult<Driver>> Login ([FromBody]LoginDto dto)
+    public async Task<ActionResult<User>> Login ([FromBody]LoginDto dto)
     {
         try
         {
-            var user = await driverLogic.Login(dto);
-            Console.WriteLine(user.Name);
+            User user = await userLogic.Login(dto);
             string token = GenerateJwt(user);
             return Ok(token);
 
@@ -59,12 +59,12 @@ public class DriversController : ControllerBase
     }
     
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<Driver>> GetDriverByIdAsync([FromRoute] int id)
+    public async Task<ActionResult<User>> GetUserByIdAsync([FromRoute] int id)
     {
         try
         {
-            Driver driver = await driverLogic.GetDriverByIdAsync(id);
-            return Ok(driver);
+            User user = await userLogic.GetUserByIdAsync(id);
+            return Ok(user);
         }
         catch (Exception e)
         {
@@ -72,10 +72,26 @@ public class DriversController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
-
-    private string GenerateJwt(Driver driver)
+    
+   [HttpPost, Route("license")]
+    public async Task<ActionResult<User>> UpdateTheLicenseNo([FromBody]UpdateLicenseDto dto)
     {
-        List<Claim> claims = GenerateClaims(driver);
+        
+        try
+        {
+            User user = await userLogic.UpdateTheLicenseNo(dto);
+            return Ok(user);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return (OkObjectResult)StatusCode(500, e.Message);
+        }
+    }
+
+    private string GenerateJwt(User user)
+    {
+        List<Claim> claims = GenerateClaims(user);
         SymmetricSecurityKey key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));
         SigningCredentials signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
         
@@ -94,16 +110,14 @@ public class DriversController : ControllerBase
         return serializedToken;   
     }
 
-    private List<Claim> GenerateClaims(Driver driver)
+    private List<Claim> GenerateClaims(User user)
     {
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, config["Jwt:Subject"]),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-            new Claim("Id", driver.Id.ToString())
-            //I guess there will be an Id added in the Driver's class
-            // AWESOME GUESS!!!
+            new Claim("Id", user.Id.ToString())
         };
 
         return claims.ToList();

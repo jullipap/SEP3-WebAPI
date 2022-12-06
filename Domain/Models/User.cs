@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace Domain.Models;
 
-public class Driver
+public class User
 //Refactor to User
 {
     public string Name { get; set; }
@@ -13,7 +13,7 @@ public class Driver
     public int Id { get; set; }
     public int Phone { get; set; }
 
-    public Driver(string name, int? licenseNumber, string email, int id, int phone)
+    public User(string name, int? licenseNumber, string email, int id, int phone)
     {
         Name = name;
         LicenseNumber = licenseNumber;
@@ -22,7 +22,7 @@ public class Driver
         Phone = phone;
     }
 
-    public Driver()
+    public User()
     {
 
     }

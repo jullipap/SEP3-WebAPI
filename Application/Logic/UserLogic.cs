@@ -8,30 +8,35 @@ using Domain.Models;
 
 namespace Application.Logic;
 
-public class DriverLogic : IDriverLogic
+public class UserLogic : IUserLogic
 {
-    private readonly IDriverDao driverDao;
+    private readonly IUserDao userDao;
 
-    public DriverLogic(IDriverDao driverDao)
+    public UserLogic(IUserDao userDao)
     {
-        this.driverDao = driverDao;
+        this.userDao = userDao;
     }
 
-    public Task<Driver> Register(RegisterDto dto)
+    public Task<User> Register(RegisterDto dto)
     {
         string encryptedPassword = GetHashString(dto.Password);
-        return driverDao.Register(dto.Name, Int32.Parse( dto.Phone), dto.Email, encryptedPassword, Int32.Parse(dto.LicenseNumber));
+        return userDao.Register(dto.Name, Int32.Parse( dto.Phone), dto.Email, encryptedPassword, Int32.Parse(dto.LicenseNumber));
     }
 
-    public Task<Driver> Login(LoginDto dto)
+    public Task<User> Login(LoginDto dto)
     {
         string encryptedPassword = GetHashString(dto.Password);
-        return driverDao.Login(dto.Email, encryptedPassword);
+        return userDao.Login(dto.Email, encryptedPassword);
     }
 
-    public Task<Driver> GetDriverByIdAsync(int id)
+    public Task<User> GetUserByIdAsync(int id)
     {
-        return driverDao.GetDriverByIdAsync(id);
+        return userDao.GetUserByIdAsync(id);
+    }
+
+    public Task<User> UpdateTheLicenseNo(UpdateLicenseDto dto)
+    {
+        return userDao.UpdateTheLicenseNo(dto.UserId, dto.LicenseNo);
     }
 
     private static byte[] GetHash(string inputString)

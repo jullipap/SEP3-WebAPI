@@ -54,13 +54,12 @@ public class RideDao : IRideDao
        return rides;
    }
 
-    public async Task<string> JoinRide(int Id, string name, string phone)
+    public async Task<string> JoinRide(int userId, int rideId)
     {
         JoinRideMessage joinRideDto = new JoinRideMessage()
         {
-            RideId = Id,
-            PassengerName = name,
-            PassengerPhone = phone
+            RideId = rideId,
+            UserId = userId //need to fix proto
         };
     
         var reply = await client.joinRideAsync(joinRideDto);

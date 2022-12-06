@@ -48,9 +48,9 @@ public class RideLogic : IRideLogic
         
     }
 
-    public Task<string> JoinRide(Domain.DTOs.JoinRideDto dto)
+    public Task<string> JoinRide(JoinRideDto dto)
     {
-        return rideDao.JoinRide(dto.RideId, dto.Name, dto.Phone);
+        return rideDao.JoinRide(dto.RideId, dto.UserId);
     }
 
     public Task<Ride> CreateRide(RideCreationDto createRideDto)

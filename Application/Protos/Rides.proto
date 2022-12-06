@@ -56,8 +56,9 @@ message DriverMessage{
 
 message JoinRideMessage{
   int32 rideId = 1;
-  string passengerName = 2;
-  string passengerPhone = 3;
+  int32 userId = 2;
+  //string passengerName = 2;
+  //string passengerPhone = 3;
 }
 
 message ConfirmationMessage{

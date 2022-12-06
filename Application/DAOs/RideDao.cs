@@ -20,7 +20,7 @@ public class RideDao : IRideDao
         client = new Rides.RidesClient(channel);
     }
 
-    public async Task<List<Ride>> GetAllAsync()
+    public async Task<List<Ride>> GetAllAsync(DateTime? startDate, DateTime? endDate)
     {
        var reply = await client.getRidesAsync(new EpochTimelineMessage {});
        List<Ride> rides = new List<Ride>();
@@ -59,7 +59,7 @@ public class RideDao : IRideDao
         JoinRideMessage joinRideDto = new JoinRideMessage()
         {
             RideId = rideId,
-            UserId = userId //need to fix proto
+            UserId = userId //need to fix proto - done
         };
     
         var reply = await client.joinRideAsync(joinRideDto);

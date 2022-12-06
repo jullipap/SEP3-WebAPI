@@ -8,6 +8,6 @@ public interface IUserDao
     Task<User> Login(string name, string password);
     Task<User> GetUserByIdAsync(int id);
 
-    Task<User> UpdateTheLicenseNo(int id, int licenseNo);
+    Task UpdateTheLicenseNo(int id, int licenseNo);
 
 }

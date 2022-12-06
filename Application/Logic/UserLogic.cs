@@ -36,7 +36,8 @@ public class UserLogic : IUserLogic
 
     public Task<User> UpdateTheLicenseNo(UpdateLicenseDto dto)
     {
-        return userDao.UpdateTheLicenseNo(dto.UserId, dto.LicenseNo);
+        return userDao.UpdateTheLicenseNo(dto.UserId, dto.LicenseNo) as Task<User>;
+        //this is a safe cast. There was some error and it might solve it
     }
 
     private static byte[] GetHash(string inputString)

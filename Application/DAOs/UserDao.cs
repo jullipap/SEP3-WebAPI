@@ -47,7 +47,7 @@ public class UserDao : IUserDao
         }
         User user = new User()
         {
-            Id = reply.UserId,
+            Id = reply.UserId
         };
         return user;
     }
@@ -65,8 +65,13 @@ public class UserDao : IUserDao
         return user;
     }
 
-    public Task<User> UpdateTheLicenseNo(int id, int licenseNo)
+    public async Task UpdateTheLicenseNo(int id, int licenseNo)
     {
-        throw new NotImplementedException();
+        LicenseMessage licenseMessage = new LicenseMessage()
+        {
+            LicenseNo = licenseNo,
+            UserId = id
+        };
+        await client.updateLicenseAsync(licenseMessage);
     }
 }

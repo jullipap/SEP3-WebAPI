@@ -117,7 +117,9 @@ public class UsersController : ControllerBase
             new Claim(JwtRegisteredClaimNames.Sub, config["Jwt:Subject"]),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-            new Claim("Id", user.Id.ToString())
+            new Claim("Id", user.Id.ToString()),
+            new Claim("hasLicenseNumber", user.LicenseNumber == null ? "True" : "False")
+
         };
 
         return claims.ToList();

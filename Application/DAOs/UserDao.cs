@@ -1,4 +1,5 @@
-﻿using Application.DaoInterfaces;
+﻿using System.Configuration;
+using Application.DaoInterfaces;
 using Domain.Models;
 using Grpc.Net.Client;
 
@@ -46,14 +47,14 @@ public class UserDao : IUserDao
         }
         User user = new User()
         {
-            Id = reply.DriverId,
+            Id = reply.UserId,
         };
         return user;
     }
 
     public  async Task<User> GetUserByIdAsync(int id)
     {
-        UsersMessageId userMessageId = new UsersMessageId() { DriverId = id };
+        UsersMessageId userMessageId = new UsersMessageId() { UserId = id };
         var reply = await client.getDriverAsync(userMessageId);
         User user = new User()
         {

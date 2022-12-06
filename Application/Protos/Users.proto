@@ -7,7 +7,7 @@ service Users{
   rpc createAccount(CreateAccountMessage) returns (UsersMessage);
   rpc login(LoginMessage) returns (BoolMessage);
   rpc getDriver(UsersMessageId) returns (UsersMessage);
-  rpc updateLicense(LicenseMessage) returns (NullMessage);
+  rpc updateLicense(LicenseMessage) returns (NullMessageUser);
 }
 
 message LicenseMessage{
@@ -15,7 +15,7 @@ message LicenseMessage{
   int32 userId = 2;
 }
 
-message NullMessage{
+message NullMessageUser{
   
 }
 

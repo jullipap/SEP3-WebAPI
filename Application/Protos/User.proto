@@ -12,6 +12,7 @@ service User{
 
 message LicenseMessage{
   int32 licenseNo = 1;
+  int32 userId = 2;
 }
 
 message NullMessage{

@@ -133,4 +133,39 @@ public class RideDao : IRideDao
         };
         return ride;
     }
+
+    public async Task<List<Ride>> getRidesByDriverId(int driverId)
+    {
+        var reply = client.getRidesByDriverId(new UserIdMessage() {UserId = driverId}); //maybe await
+        List<Ride> rides = new List<Ride>();
+        
+        foreach (var rideMessage in reply.Rides)
+        {
+            Location startLocation = new Location()
+            {
+                Country = rideMessage.StartLocation.Country, 
+                City = rideMessage.StartLocation.City, 
+                CoordinatesX = rideMessage.StartLocation.CoordinateX,
+                CoordinatesY = rideMessage.StartLocation.CoordinateY, 
+                StreetName = rideMessage.StartLocation.Street, 
+                ZipCode = rideMessage.StartLocation.Zipcode
+            };
+           
+            Location endLocation = new Location()
+            {
+                Country = rideMessage.Destination.Country,
+                City = rideMessage.Destination.City,
+                CoordinatesX = rideMessage.Destination.CoordinateX,
+                CoordinatesY = rideMessage.Destination.CoordinateY, 
+                StreetName = rideMessage.Destination.Street, 
+                ZipCode = rideMessage.Destination.Zipcode
+            };
+
+            DateTime dateTime = new DateTime(rideMessage.StartDate) ;
+           
+            rides.Add(new Ride(endLocation,dateTime,startLocation,rideMessage.Id,driverId, rideMessage.Capacity));
+        }
+   
+        return rides;
+    }
 }

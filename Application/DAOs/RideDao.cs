@@ -134,7 +134,7 @@ public class RideDao : IRideDao
         return ride;
     }
 
-    public async Task<List<Ride>> getRidesByDriverId(int driverId)
+    public async Task<List<Ride>> GetRidesByDriverId(int driverId)
     {
         var reply = client.getRidesByDriverId(new UserIdMessage() {UserId = driverId}); //maybe await
         List<Ride> rides = new List<Ride>();

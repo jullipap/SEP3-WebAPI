@@ -72,4 +72,9 @@ public class RideLogic : IRideLogic
         return rideDao.CreateRide(createRideDto.StartLocation, createRideDto.Destination, date,
             createRideDto.DriverId, createRideDto.Capacity);
     }
+
+    public Task<List<Ride>> GetRidesByDriverId(int driverId)
+    {
+        return rideDao.GetRidesByDriverId(driverId);
+    }
 }

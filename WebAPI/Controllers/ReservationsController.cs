@@ -44,4 +44,19 @@ public class ReservationsController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
+
+    [HttpGet, Route("ride/{rideId :int}")]
+    public async Task<ActionResult<List<Reservation>>> GetAcceptedReservationsByRideId([FromRoute]int rideId)
+    {
+        try
+        {
+            var reservations = await reservationLogic.GetAcceptedReservationsByRideId(rideId);
+            return Ok(reservations);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
 }

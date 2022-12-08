@@ -9,4 +9,6 @@ public interface IRideLogic
     Task<string> JoinRide(Domain.DTOs.JoinRideDto dto);
 
     Task<Ride> CreateRide(RideCreationDto dto);
+
+    Task<List<Ride>> GetRidesByDriverId(int driverId);
 }

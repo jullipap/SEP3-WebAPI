@@ -64,4 +64,19 @@ public class RidesController : ControllerBase
         }
     }
 
+    [HttpGet, Route("driver/{driverId :int}")]
+    public async Task<ActionResult<List<Ride>>> GetRidesByDriverId([FromRoute]int driverId)
+    {
+        try
+        {
+            var rides = await rideLogic.GetRidesByDriverId(driverId);
+            return Ok(rides);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
+
 }

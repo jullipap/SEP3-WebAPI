@@ -11,4 +11,6 @@ public interface IRideDao
 
     Task<Ride> CreateRide(Location startLocation, Location destination, DateTime startDate, int driverId,
         int capacity);
+    
+    Task<List<Ride>> GetRidesByDriverId(int driverId);
 }

@@ -23,4 +23,9 @@ public class ReservationLogic : IReservationLogic
     {
         return reservationDao.GetReservationToAccept();
     }
+
+    public Task<List<Reservation>> GetAcceptedReservationsByRideId(int rideId)
+    {
+        return reservationDao.GetAcceptedReservationsByRideId(rideId);
+    }
 }

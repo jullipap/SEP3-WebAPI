@@ -35,9 +35,9 @@ public class ReservationDao : IReservationDao
         return reservation;
     }
 
-    public async Task<ICollection<Reservation>> GetReservationToAccept()
+    public async Task<ICollection<Reservation>> GetReservationToAccept(int id)
     {
-        var reply = await client.getAllReservationsToAcceptAsync(null);
+        var reply = await client.getAllReservationsToAcceptAsync(new IdMessage(){DriverId = id});
         List<Reservation> reservations = new List<Reservation>();
 
         foreach (var reservation in reply.ReservationMessages)

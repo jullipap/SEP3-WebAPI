@@ -74,13 +74,14 @@ public class UsersController : ControllerBase
     }
     
    [HttpPost, Route("license")]
-    public async Task<ActionResult<User>> UpdateTheLicenseNo([FromBody]UpdateLicenseDto dto)
+    public async Task<ActionResult> UpdateTheLicenseNo([FromBody]UpdateLicenseDto dto)
     {
         
         try
         {
-            User user = await userLogic.UpdateTheLicenseNo(dto);
-            return Ok(user);
+            await userLogic.UpdateTheLicenseNo(dto);
+            string token = GenerateJwt(new User(){Id = dto.UserId, LicenseNumber = dto.LicenseNo});
+            return Ok(token);
         }
         catch (Exception e)
         {
@@ -118,7 +119,7 @@ public class UsersController : ControllerBase
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
             new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
             new Claim("Id", user.Id.ToString()),
-            new Claim("hasLicenseNumber", user.LicenseNumber == null ? "True" : "False")
+            new Claim("hasLicenseNumber", user.LicenseNumber == null ? "False" : "True")
 
         };
 

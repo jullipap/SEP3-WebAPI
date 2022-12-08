@@ -4,7 +4,7 @@ option csharp_namespace = "Application";
 
 service Reservations{
   rpc acceptPassenger(AcceptMessage) returns (ReservationMessage);
-  rpc getAllReservationsToAccept(NullMessage) returns (ReservationsToAcceptCollection);
+  rpc getAllReservationsToAccept(IdMessage) returns (ReservationsToAcceptCollection);
   rpc getAcceptedReservationsByRideId(RideIdMessage) returns (ReservationsToAcceptCollection); // i think return is ok
 }
 
@@ -31,8 +31,8 @@ message ReservationMessage{
   //Maybe isAccepted?
 }
 
-message NullMessage{
-  
+message IdMessage{
+  int32 driverId = 1;
 }
 
 message ReservationsToAcceptCollection{

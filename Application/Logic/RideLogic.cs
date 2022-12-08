@@ -26,7 +26,7 @@ public class RideLogic : IRideLogic
             int startMonth = Int32.Parse(startDateArr[1]);
             int startDay = Int32.Parse(startDateArr[0]);
 
-             startDateTime = new DateTime(startDay, startMonth, startYear,0,0,0);
+             startDateTime = new DateTime(startMonth, startDay, startYear,0,0,0);
 
         }
 
@@ -40,7 +40,7 @@ public class RideLogic : IRideLogic
             int endMonth = Int32.Parse(endDateArr[1]);
             int endDay = Int32.Parse(endDateArr[0]);
 
-             endDateTime  = new DateTime(endDay, endMonth, endYear,23,59,59);
+             endDateTime  = new DateTime(endMonth, endDay, endYear,23,59,59);
         }
         
         
@@ -50,7 +50,7 @@ public class RideLogic : IRideLogic
 
     public Task<string> JoinRide(JoinRideDto dto)
     {
-        return rideDao.JoinRide(dto.RideId, dto.UserId);
+        return rideDao.JoinRide(dto.UserId, dto.RideId);
     }
 
     public Task<Ride> CreateRide(RideCreationDto createRideDto)

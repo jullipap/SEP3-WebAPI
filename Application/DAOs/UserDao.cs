@@ -17,15 +17,30 @@ public class UserDao : IUserDao
 
     public  async Task<User> Register(string name, int phone, string email, string encryptedPassword, int licenseNo)
     {
-        CreateAccountMessage createAccountMessage = new CreateAccountMessage() 
-        { 
-            Name = name,
-            LicenseNo = licenseNo,
-            PhoneNumber = phone,
-            Email = email,
-            Password = encryptedPassword
+        CreateAccountMessage createAccountMessage;
+        if (licenseNo == -1)
+        {
+            createAccountMessage = new CreateAccountMessage() 
+            { 
+                Name = name,
+                PhoneNumber = phone,
+                Email = email,
+                Password = encryptedPassword
             
-        };
+            };
+        }
+        else
+        {
+            createAccountMessage = new CreateAccountMessage() 
+            { 
+                Name = name,
+                LicenseNo = licenseNo,
+                PhoneNumber = phone,
+                Email = email,
+                Password = encryptedPassword
+            
+            };
+        }
         var reply = await client.createAccountAsync(createAccountMessage);
         
         User user = new User()
@@ -45,9 +60,16 @@ public class UserDao : IUserDao
         {
             throw new Exception("Incorrect data, try to log in again");
         }
+
+        int? licenseNo = null;
+        if (reply.HasLicenseNo)
+        {
+            licenseNo = reply.LicenseNo;
+        }
         User user = new User()
         {
-            Id = reply.UserId
+            Id = reply.UserId,
+            LicenseNumber = licenseNo
         };
         return user;
     }
@@ -72,6 +94,12 @@ public class UserDao : IUserDao
             LicenseNo = licenseNo,
             UserId = id
         };
-        await client.updateLicenseAsync(licenseMessage);
+        
+        var reply = await client.updateLicenseAsync(licenseMessage);
+        
+        if (!reply.Status)
+        {
+            throw new Exception("Updating license resulted in failure");
+        }
     }
 }

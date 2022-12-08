@@ -30,12 +30,12 @@ public class ReservationsController : ControllerBase
         }
     }
 
-    [HttpGet]
-    public async Task<ActionResult<ICollection<Reservation>>> GetReservationsToAccept()
+    [HttpGet,Route("driver/{id:int}")]
+    public async Task<ActionResult<ICollection<Reservation>>> GetReservationsToAccept([FromRoute] int id)
     {
         try
         {
-            var reservations = await reservationLogic.GetReservationToAccept();
+            var reservations = await reservationLogic.GetReservationToAccept(id);
             return Ok(reservations);
         }
         catch (Exception e)

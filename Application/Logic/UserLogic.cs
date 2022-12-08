@@ -20,7 +20,15 @@ public class UserLogic : IUserLogic
     public Task<User> Register(RegisterDto dto)
     {
         string encryptedPassword = GetHashString(dto.Password);
-        return userDao.Register(dto.Name, Int32.Parse( dto.Phone), dto.Email, encryptedPassword, Int32.Parse(dto.LicenseNumber));
+        if (dto.LicenseNumber == null)
+        {
+            return userDao.Register(dto.Name, Int32.Parse( dto.Phone), dto.Email, encryptedPassword, -1);
+
+        }
+        else
+        {
+            return userDao.Register(dto.Name, Int32.Parse( dto.Phone), dto.Email, encryptedPassword, Int32.Parse(dto.LicenseNumber));
+        }
     }
 
     public Task<User> Login(LoginDto dto)
@@ -34,10 +42,9 @@ public class UserLogic : IUserLogic
         return userDao.GetUserByIdAsync(id);
     }
 
-    public Task<User> UpdateTheLicenseNo(UpdateLicenseDto dto)
+    public Task UpdateTheLicenseNo(UpdateLicenseDto dto)
     {
-        return userDao.UpdateTheLicenseNo(dto.UserId, dto.LicenseNo) as Task<User>;
-        //this is a safe cast. There was some error and it might solve it
+        return userDao.UpdateTheLicenseNo(dto.UserId, dto.LicenseNo);
     }
 
     private static byte[] GetHash(string inputString)

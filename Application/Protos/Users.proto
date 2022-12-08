@@ -7,7 +7,7 @@ service Users{
   rpc createAccount(CreateAccountMessage) returns (UsersMessage);
   rpc login(LoginMessage) returns (BoolMessage);
   rpc getDriver(UsersMessageId) returns (UsersMessage);
-  rpc updateLicense(LicenseMessage) returns (NullMessageUser);
+  rpc updateLicense(LicenseMessage) returns (StatusMessage);
 }
 
 message LicenseMessage{
@@ -15,13 +15,13 @@ message LicenseMessage{
   int32 userId = 2;
 }
 
-message NullMessageUser{
-  
+message StatusMessage{
+  bool status = 1;
 }
 
 message CreateAccountMessage{
   string name = 1;
-  int32 licenseNo = 2;
+  optional int32 licenseNo = 2;
   int32 phoneNumber = 3;
   string email = 4;
   string password = 5;
@@ -32,6 +32,7 @@ message UsersMessage{
   string name = 1;
   int32 phoneNumber = 2;
   string email = 3;
+  optional int32 licenseNumber = 4;
 }
 
 message LoginMessage{
@@ -42,6 +43,7 @@ message LoginMessage{
 message BoolMessage{
   bool status = 1;
   int32 userId = 2;
+  optional int32 licenseNo = 3;
 }
 
 message UsersMessageId{

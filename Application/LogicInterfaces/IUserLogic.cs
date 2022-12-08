@@ -9,5 +9,5 @@ public interface IUserLogic
     Task<User> Login(LoginDto dto);
 
     Task<User> GetUserByIdAsync(int id);
-    Task<User> UpdateTheLicenseNo(UpdateLicenseDto dto);
+    Task UpdateTheLicenseNo(UpdateLicenseDto dto);
 }

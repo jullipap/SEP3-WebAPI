@@ -22,7 +22,13 @@ public class RideDao : IRideDao
 
     public async Task<List<Ride>> GetAllAsync(DateTime? startDate, DateTime? endDate)
     {
-       var reply = await client.getRidesAsync(new EpochTimelineMessage {});
+        EpochTimelineMessage epochMessage = new EpochTimelineMessage();
+        if (startDate != null && endDate != null)
+        {
+            epochMessage.EpochLowerBound = startDate.Epoch;
+            epochMessage.EpochUpperBound = endDate.Epoch;
+        }
+       var reply = await client.getRidesAsync(epochMessage);
        List<Ride> rides = new List<Ride>();
        foreach (var rideMessage in reply.Rides)
        {

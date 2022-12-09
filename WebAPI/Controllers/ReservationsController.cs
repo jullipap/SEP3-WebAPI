@@ -45,7 +45,7 @@ public class ReservationsController : ControllerBase
         }
     }
 
-    [HttpGet, Route("ride/{rideId :int}")]
+    [HttpGet, Route("ride/{rideId:int}")]
     public async Task<ActionResult<List<Reservation>>> GetAcceptedReservationsByRideId([FromRoute]int rideId)
     {
         try

@@ -45,8 +45,8 @@ message LocationMessage{
   string city = 2;
   string street = 3;
   string zipcode = 4;
-  int64 coordinateX = 5;
-  int64 coordinateY = 6;
+  double coordinateX = 5;
+  double coordinateY = 6;
 }
 
 message DriverMessage{

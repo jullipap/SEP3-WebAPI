@@ -55,7 +55,7 @@ public class ReservationDao : IReservationDao
 
     public async Task<List<Reservation>> GetAcceptedReservationsByRideId(int rideId)
     {
-        var reply = client.getAcceptedReservationsByRideId(new RideIdMessage() {RideId = rideId}); //maybe await
+        var reply = await client.getAcceptedReservationsByRideIdAsync(new RideIdMessage() {RideId = rideId}); 
         List<Reservation> reservations = new List<Reservation>();
 
         foreach (var reservation in reply.ReservationMessages)

@@ -64,7 +64,7 @@ public class RidesController : ControllerBase
         }
     }
 
-    [HttpGet, Route("driver/{driverId :int}")]
+    [HttpGet, Route("driver/{driverId:int}")]
     public async Task<ActionResult<List<Ride>>> GetRidesByDriverId([FromRoute]int driverId)
     {
         try

@@ -136,9 +136,9 @@ public class RideDao : IRideDao
 
     public async Task<List<Ride>> GetRidesByDriverId(int driverId)
     {
-        var reply = client.getRidesByDriverId(new UserIdMessage() {UserId = driverId}); //maybe await
+        var reply = await client.getRidesByDriverIdAsync(new UserIdMessage() {UserId = driverId});
         List<Ride> rides = new List<Ride>();
-        
+
         foreach (var rideMessage in reply.Rides)
         {
             Location startLocation = new Location()

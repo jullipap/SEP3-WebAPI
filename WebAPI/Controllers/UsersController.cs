@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Application.LogicInterfaces;
 using Domain.DTOs;
 using Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using DateTime = System.DateTime;
 using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
@@ -58,6 +59,7 @@ public class UsersController : ControllerBase
         }
     }
     
+    [Authorize]
     [HttpGet("{id:int}")]
     public async Task<ActionResult<User>> GetUserByIdAsync([FromRoute] int id)
     {
@@ -72,7 +74,7 @@ public class UsersController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
-    
+    [Authorize]
    [HttpPost, Route("license")]
     public async Task<ActionResult> UpdateTheLicenseNo([FromBody]UpdateLicenseDto dto)
     {
@@ -86,7 +88,7 @@ public class UsersController : ControllerBase
         catch (Exception e)
         {
             Console.WriteLine(e);
-            return (OkObjectResult)StatusCode(500, e.Message);
+            return StatusCode(500, e.Message);
         }
     }
 

@@ -17,6 +17,7 @@ public class RideLogic : IRideLogic
     
     public Task<List<Ride>> GetAllAsync(string? startDate, string? endDate)
     {
+        var epochNow = DateTimeOffset.Now.ToUnixTimeSeconds();
         DateTime? startDateTime = null;
         if (startDate != null)
         {
@@ -44,7 +45,7 @@ public class RideLogic : IRideLogic
         }
         
         
-        return rideDao.GetAllAsync(startDateTime, endDateTime);
+        return rideDao.GetAllAsync(startDateTime, endDateTime, epochNow);
         
     }
 

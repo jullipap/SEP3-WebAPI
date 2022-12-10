@@ -1,6 +1,7 @@
 ﻿using Application.LogicInterfaces;
 using Domain.DTOs;
 using Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -14,7 +15,7 @@ public class ReservationsController : ControllerBase
     {
         this.reservationLogic = reservationLogic;
     }
-
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<Reservation>> AcceptPassenger([FromBody]AcceptReservationDto acceptDto)
     {
@@ -29,7 +30,7 @@ public class ReservationsController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
-
+    [Authorize]
     [HttpGet,Route("driver/{id:int}")]
     public async Task<ActionResult<ICollection<Reservation>>> GetReservationsToAccept([FromRoute] int id)
     {
@@ -44,7 +45,7 @@ public class ReservationsController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
-
+    [Authorize]
     [HttpGet, Route("ride/{rideId:int}")]
     public async Task<ActionResult<List<Reservation>>> GetAcceptedReservationsByRideId([FromRoute]int rideId)
     {

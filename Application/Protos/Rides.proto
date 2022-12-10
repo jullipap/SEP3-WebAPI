@@ -17,6 +17,7 @@ message UserIdMessage{
 message EpochTimelineMessage{
   optional int64 epochLowerBound = 1;
   optional int64 epochUpperBound = 2;
+  int64 epochNow = 3;
 }
 
 message CreateRideMessage{

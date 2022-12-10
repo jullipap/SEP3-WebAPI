@@ -1,6 +1,7 @@
 ﻿using Application.LogicInterfaces;
 using Domain.DTOs;
 using Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -15,7 +16,7 @@ public class RidesController : ControllerBase
     {
         this.rideLogic = rideLogic;
     }
-
+    [Authorize]
     [HttpPost]
     public async Task<ActionResult<Ride>> JoinRide([FromBody] JoinRideDto dto)
     {
@@ -31,8 +32,9 @@ public class RidesController : ControllerBase
         }
         
     }
-    
     [HttpGet]
+    [Authorize]
+
     public async Task<ActionResult<List<Ride>>> GetAllAsync(string? startDate = null, string? endDate = null)
     {
         try
@@ -47,6 +49,7 @@ public class RidesController : ControllerBase
         }
     }
 
+    [Authorize]
     [HttpPost("Create")]
     public async Task<ActionResult<Ride>> createRide([FromBody] RideCreationDto dto)
     {
@@ -63,7 +66,7 @@ public class RidesController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
-
+    [Authorize]
     [HttpGet, Route("driver/{driverId:int}")]
     public async Task<ActionResult<List<Ride>>> GetRidesByDriverId([FromRoute]int driverId)
     {

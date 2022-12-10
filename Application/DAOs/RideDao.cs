@@ -20,9 +20,9 @@ public class RideDao : IRideDao
         client = new Rides.RidesClient(channel);
     }
 
-    public async Task<List<Ride>> GetAllAsync(DateTime? startDate, DateTime? endDate)
+    public async Task<List<Ride>> GetAllAsync(DateTime? startDate, DateTime? endDate, long epochNow)
     {
-        EpochTimelineMessage epochMessage = new EpochTimelineMessage();
+        EpochTimelineMessage epochMessage = new EpochTimelineMessage(){EpochNow = epochNow};
         if (startDate != null && endDate != null)
         {
             epochMessage.EpochLowerBound = startDate.Epoch;

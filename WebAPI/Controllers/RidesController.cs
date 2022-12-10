@@ -35,11 +35,11 @@ public class RidesController : ControllerBase
     [HttpGet]
     [Authorize]
 
-    public async Task<ActionResult<List<Ride>>> GetAllAsync(string? startDate = null, string? endDate = null)
+    public async Task<ActionResult<List<Ride>>> GetAllAsync(string userId, string? startDate = null, string? endDate = null)
     {
         try
         {
-            var rides = await rideLogic.GetAllAsync(startDate, endDate);
+            var rides = await rideLogic.GetAllAsync(startDate, endDate, userId);
             return Ok(rides);
         }
         catch (Exception e)

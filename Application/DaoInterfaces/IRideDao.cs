@@ -6,7 +6,7 @@ namespace Application.DaoInterfaces;
 
 public interface IRideDao
 {
-    Task<List<Ride>> GetAllAsync(DateTime? startDate, DateTime? endDate, long epochNow);
+    Task<List<Ride>> GetAllAsync(DateTime? startDate, DateTime? endDate, long epochNow, int userId);
     Task<string> JoinRide(int userId, int rideId);
 
     Task<Ride> CreateRide(Location startLocation, Location destination, DateTime startDate, int driverId,

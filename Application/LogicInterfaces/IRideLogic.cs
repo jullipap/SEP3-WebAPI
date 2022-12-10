@@ -5,8 +5,8 @@ namespace Application.LogicInterfaces;
 
 public interface IRideLogic
 {
-    Task<List<Ride>> GetAllAsync(string? startDate, string? endDate);
-    Task<string> JoinRide(Domain.DTOs.JoinRideDto dto);
+    Task<List<Ride>> GetAllAsync(string? startDate, string? endDate, string userId);
+    Task<string> JoinRide(JoinRideDto dto);
 
     Task<Ride> CreateRide(RideCreationDto dto);
 

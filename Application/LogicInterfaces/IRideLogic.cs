@@ -11,4 +11,5 @@ public interface IRideLogic
     Task<Ride> CreateRide(RideCreationDto dto);
 
     Task<List<Ride>> GetRidesByDriverId(int driverId);
+    Task<Ride> GetRideByIdAsync(int id);
 }

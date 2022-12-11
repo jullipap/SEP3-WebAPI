@@ -13,4 +13,7 @@ public interface IRideDao
         int capacity);
     
     Task<List<Ride>> GetRidesByDriverId(int driverId);
+    
+    Task<Ride> GetRideByIdAsync(int id);
+
 }

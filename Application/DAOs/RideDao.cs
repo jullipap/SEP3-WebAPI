@@ -168,4 +168,35 @@ public class RideDao : IRideDao
    
         return rides;
     }
+
+    public async Task<Ride> GetRideByIdAsync(int id)
+    {
+        var rideMessage = await client.getRideByIdAsync(new RideIdMessage() {RideId = id});
+        
+        Location startLocation = new Location()
+        {
+            Country = rideMessage.StartLocation.Country, 
+            City = rideMessage.StartLocation.City, 
+            CoordinatesX = rideMessage.StartLocation.CoordinateX,
+            CoordinatesY = rideMessage.StartLocation.CoordinateY, 
+            StreetName = rideMessage.StartLocation.Street, 
+            ZipCode = rideMessage.StartLocation.Zipcode
+        };
+           
+        Location endLocation = new Location()
+        {
+            Country = rideMessage.Destination.Country,
+            City = rideMessage.Destination.City,
+            CoordinatesX = rideMessage.Destination.CoordinateX,
+            CoordinatesY = rideMessage.Destination.CoordinateY, 
+            StreetName = rideMessage.Destination.Street, 
+            ZipCode = rideMessage.Destination.Zipcode
+        };
+
+        DateTime dateTime = new DateTime(rideMessage.StartDate) ;
+
+        Ride ride = new Ride(endLocation, dateTime, startLocation, rideMessage.Id, rideMessage.Driver.Id, rideMessage.Capacity);
+
+        return ride;
+    }
 }

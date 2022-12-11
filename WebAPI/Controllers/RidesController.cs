@@ -81,5 +81,21 @@ public class RidesController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
+    
+    [Authorize]
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<Ride>> GetRideById([FromRoute] int id)
+    {
+        try
+        {
+            Ride ride = await rideLogic.GetRideByIdAsync(id);
+            return Ok(ride);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
 
 }

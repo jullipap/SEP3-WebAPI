@@ -7,10 +7,16 @@ service Rides{
   rpc joinRide(JoinRideMessage) returns (ConfirmationMessage);
   rpc createRide(CreateRideMessage) returns (RideMessage);
   rpc getRidesByDriverId(UserIdMessage) returns (RidesCollection);
+  rpc getRideById(RideIdMessage) returns (RideMessage);
 }
 
 message UserIdMessage{
   int32 userId = 1;
+}
+
+message RideIdMessage
+{
+  int32 rideId = 1;
 }
 
 //Probably not needed for now

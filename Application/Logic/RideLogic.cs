@@ -78,4 +78,9 @@ public class RideLogic : IRideLogic
     {
         return rideDao.GetRidesByDriverId(driverId);
     }
+
+    public Task<Ride> GetRideByIdAsync(int id)
+    {
+        return rideDao.GetRideByIdAsync(id);
+    }
 }

@@ -5,10 +5,16 @@ option csharp_namespace = "Application";
 service Reservations{
   rpc acceptPassenger(AcceptMessage) returns (ReservationMessage);
   rpc getAllReservationsToAccept(IdMessage) returns (ReservationsToAcceptCollection);
-  rpc getAcceptedReservationsByRideId(IdMessage) returns (ReservationsToAcceptCollection); // i think return is ok
+  rpc getAcceptedReservationsByRideId(IdMessage) returns (ReservationsToAcceptCollection);
+  
+  rpc getAllReservationsByUserId(IdMessage) returns(ReservationsToAcceptCollection);
+  rpc changeReservationStatus(ChangeReservStatusMessage) returns(BoolValue);
 }
 
-
+message ChangeReservStatusMessage{
+  int32 id = 1;
+  string status = 2;
+}
 
 message AcceptMessage{
   int32 reservationId = 1;
@@ -26,6 +32,7 @@ message ReservationMessage{
   string phone = 3;
   optional BoolValue didAccept = 4;
   int32 id = 5;
+  string status = 6;
   //Maybe isAccepted?
 }
 

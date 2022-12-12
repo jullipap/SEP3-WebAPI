@@ -9,12 +9,9 @@ service Rides{
   rpc getRidesByDriverId(UserIdMessage) returns (RidesCollection);
   rpc getRideById(RideIdMessage) returns (RideMessage);
   
-  rpc ChangeRideStatus(ChangeRideStatusMessage) returns(NullMessage);
+  rpc ChangeRideStatus(ChangeRideStatusMessage) returns(ConfirmationMessage);
 }
 
-message NullMessage{
-  
-}
 
 message ChangeRideStatusMessage{
   int32 id = 1;
@@ -53,7 +50,7 @@ message RideMessage{
   int64 startDate = 4;
   DriverMessage driver = 5;
   int32 capacity = 6;
-  string status = 7;
+  bool isCancelled = 7;
 }
 
 message RidesCollection{

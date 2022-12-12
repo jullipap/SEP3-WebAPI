@@ -27,7 +27,7 @@ public class UsersController : ControllerBase
         this.userLogic = userLogic;
     }
     
-    [HttpPost, Route("register")]
+    [HttpPost]
     public async Task<ActionResult<User>> Register([FromBody]RegisterDto dto)
     {
         try
@@ -42,7 +42,7 @@ public class UsersController : ControllerBase
         }
     }
     
-    [HttpPost, Route("login")]
+    [HttpPost, Route("authentication")]
     public async Task<ActionResult<User>> Login ([FromBody]LoginDto dto)
     {
         try
@@ -75,7 +75,7 @@ public class UsersController : ControllerBase
         }
     }
     [Authorize]
-   [HttpPost, Route("license")]
+   [HttpPatch, Route("license")]
     public async Task<ActionResult> UpdateTheLicenseNo([FromBody]UpdateLicenseDto dto)
     {
         

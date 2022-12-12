@@ -16,7 +16,7 @@ public class ReservationsController : ControllerBase
         this.reservationLogic = reservationLogic;
     }
     [Authorize]
-    [HttpPost]
+    [HttpPatch]
     public async Task<ActionResult<Reservation>> AcceptPassenger([FromBody]AcceptReservationDto acceptDto)
     {
         try

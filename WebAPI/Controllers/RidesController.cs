@@ -17,7 +17,7 @@ public class RidesController : ControllerBase
         this.rideLogic = rideLogic;
     }
     [Authorize]
-    [HttpPost]
+    [HttpPost, Route("/reservation")]
     public async Task<ActionResult<Ride>> JoinRide([FromBody] JoinRideDto dto)
     {
         try
@@ -50,7 +50,7 @@ public class RidesController : ControllerBase
     }
 
     [Authorize]
-    [HttpPost("Create")]
+    [HttpPost]
     public async Task<ActionResult<Ride>> createRide([FromBody] RideCreationDto dto)
     {
         try

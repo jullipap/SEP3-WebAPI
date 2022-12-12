@@ -11,4 +11,8 @@ public interface IReservationLogic
     Task<List<Reservation>> GetAcceptedReservationsByRideId(int rideId);
 
     Task<ICollection<Reservation>> GetReservationToAccept(int id);
+
+    Task<ICollection<Reservation>> GetAllReservationsByUserIdAsync(int id);
+
+    Task ChangeReservationStatusAsync(ChangeStatusDto dto);
 }

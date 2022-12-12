@@ -83,4 +83,12 @@ public class RideLogic : IRideLogic
     {
         return rideDao.GetRideByIdAsync(id);
     }
+
+    public Task ChangeRideStatusAsync(ChangeStatusDto dto)
+    {
+        if (dto.Status.Equals("Cancelled"))
+        {
+            return rideDao.ChangeRideStatusAsync(dto.Id, dto.Status);
+        }
+        throw new Exception("Invalid status");    }
 }

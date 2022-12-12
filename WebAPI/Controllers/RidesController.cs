@@ -97,5 +97,21 @@ public class RidesController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
+    
+    [Authorize]
+    [HttpPatch]
+    public async Task<ActionResult> ChangeRideStatus([FromBody]ChangeStatusDto dto)
+    {
+        try
+        {
+            await rideLogic.ChangeRideStatusAsync(dto);
+            return Ok();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
 
 }

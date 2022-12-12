@@ -12,4 +12,6 @@ public interface IRideLogic
 
     Task<List<Ride>> GetRidesByDriverId(int driverId);
     Task<Ride> GetRideByIdAsync(int id);
+
+    Task ChangeRideStatusAsync(ChangeStatusDto dto);
 }

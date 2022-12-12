@@ -6,7 +6,6 @@ namespace Application.DAOs;
 
 public class ReservationDao : IReservationDao
 {
-    //Ive done this without importing new protofile
 
     private Reservations.ReservationsClient client;
 
@@ -27,10 +26,12 @@ public class ReservationDao : IReservationDao
         Reservation reservation = new Reservation()
         {
             //should those variables start with big letters?
-            isAccepted = reply.DidAccept.Value,
-            passengerName = reply.Name,
-            reservationId = reply.Id,
-            rideId = reply.RideId
+            IsAccepted = reply.DidAccept.Value,
+            PassengerName = reply.Name,
+            ReservationId = reply.Id,
+            RideId = reply.RideId,
+            Status = reply.Status
+
         };
         return reservation;
     }
@@ -44,13 +45,42 @@ public class ReservationDao : IReservationDao
         {
             reservations.Add(new Reservation()
             {
-              passengerName  = reservation.Name,
-              isAccepted = null,
-              reservationId = reservation.Id,
-              rideId = reservation.RideId
+              PassengerName  = reservation.Name,
+              IsAccepted = null,
+              ReservationId = reservation.Id,
+              RideId = reservation.RideId,
+              Status = reservation.Status
             });
         }
         return reservations;
+    }
+
+    public async Task<ICollection<Reservation>> GetAllReservationsByUserIdAsync(int id)
+    {
+        var reply = await client.getAllReservationsByUserIdAsync(new IdMessage() {Id = id}); 
+        List<Reservation> reservations = new List<Reservation>();
+
+        foreach (var reservation in reply.ReservationMessages)
+        {
+            reservations.Add(new Reservation()
+            {
+                PassengerName  = reservation.Name,
+                IsAccepted = true,
+                ReservationId = reservation.Id,
+                RideId = reservation.RideId,
+                Status = reservation.Status
+            });
+        }
+        return reservations;    }
+
+    public async Task ChangeReservationStatusAsync(int id, string status)
+    {
+        var reply = await client.changeReservationStatusAsync(new ChangeReservStatusMessage() {Id = id, Status = status});
+
+        if (!reply.Value)
+        {
+            throw new Exception("Status was not successfully changed");
+        }
     }
 
     public async Task<List<Reservation>> GetAcceptedReservationsByRideId(int rideId)
@@ -62,10 +92,11 @@ public class ReservationDao : IReservationDao
         {
             reservations.Add(new Reservation()
             {
-                passengerName  = reservation.Name,
-                isAccepted = true,
-                reservationId = reservation.Id,
-                rideId = rideId
+                PassengerName  = reservation.Name,
+                IsAccepted = true,
+                ReservationId = reservation.Id,
+                RideId = rideId,
+                Status = reservation.Status
             });
         }
         return reservations;

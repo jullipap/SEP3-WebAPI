@@ -1,4 +1,5 @@
 ﻿using Application.DAOs;
+using Domain.DTOs;
 using Domain.Models;
 using DateTime = Domain.Models.DateTime;
 
@@ -15,5 +16,8 @@ public interface IRideDao
     Task<List<Ride>> GetRidesByDriverId(int driverId);
     
     Task<Ride> GetRideByIdAsync(int id);
+    
+    Task ChangeRideStatusAsync(int id, string status);
+
 
 }

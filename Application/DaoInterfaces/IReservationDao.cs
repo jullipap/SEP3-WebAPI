@@ -10,4 +10,9 @@ public interface IReservationDao
     
     Task<List<Reservation>> GetAcceptedReservationsByRideId(int rideId);
     Task<ICollection<Reservation>> GetReservationToAccept(int id);
+
+    Task<ICollection<Reservation>> GetAllReservationsByUserIdAsync(int id);
+    
+    Task ChangeReservationStatusAsync(int id, string status);
+
 }

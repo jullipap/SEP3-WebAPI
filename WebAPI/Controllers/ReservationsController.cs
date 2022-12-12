@@ -45,6 +45,10 @@ public class ReservationsController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
+    
+    
+    
+    
     [Authorize]
     [HttpGet, Route("ride/{rideId:int}")]
     public async Task<ActionResult<List<Reservation>>> GetAcceptedReservationsByRideId([FromRoute]int rideId)
@@ -53,6 +57,37 @@ public class ReservationsController : ControllerBase
         {
             var reservations = await reservationLogic.GetAcceptedReservationsByRideId(rideId);
             return Ok(reservations);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
+    [Authorize]
+    [HttpGet,Route("user/{id:int}")]
+    public async Task<ActionResult<List<Reservation>>> GetAllReservationsByUserId([FromRoute]int userId)
+    {
+        try
+        {
+            var reservations = await reservationLogic.GetAllReservationsByUserIdAsync(userId);
+            return Ok(reservations);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
+    
+    [Authorize]
+    [HttpPatch,Route("status")]
+    public async Task<ActionResult> ChangeReservationStatus([FromBody]ChangeStatusDto dto)
+    {
+        try
+        {
+            await reservationLogic.ChangeReservationStatusAsync(dto);
+            return Ok();
         }
         catch (Exception e)
         {

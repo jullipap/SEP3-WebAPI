@@ -199,4 +199,14 @@ public class RideDao : IRideDao
 
         return ride;
     }
+
+    public async Task ChangeRideStatusAsync(int id, string status)
+    {
+        var reply = await client.ChangeRideStatusAsync(new ChangeRideStatusMessage() {Id = id, Status = status});
+
+        if (reply.ConfirmationMessage_.Equals("Error"))
+        {
+            throw new Exception("Status was not successfully changed");
+        }    
+    }
 }

@@ -24,6 +24,22 @@ public class ReservationLogic : IReservationLogic
         return reservationDao.GetReservationToAccept(id);
     }
 
+    public Task<ICollection<Reservation>> GetAllReservationsByUserIdAsync(int id)
+    {
+        return reservationDao.GetAllReservationsByUserIdAsync(id);
+    }
+
+    public Task ChangeReservationStatusAsync(ChangeStatusDto dto)
+    {
+        if (dto.Status.Equals("Pending") || dto.Status.Equals("Accepted") || dto.Status.Equals("Rejected")
+            || dto.Status.Equals("Cancelled by driver") || dto.Status.Equals("Cancelled by passenger"))
+        {
+            return reservationDao.ChangeReservationStatusAsync(dto.Id, dto.Status);
+        }
+        throw new Exception("Invalid status");
+        
+    }
+
     public Task<List<Reservation>> GetAcceptedReservationsByRideId(int rideId)
     {
         return reservationDao.GetAcceptedReservationsByRideId(rideId);

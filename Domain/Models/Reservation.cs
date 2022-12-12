@@ -9,4 +9,6 @@ public class Reservation
     public int reservationId { get; set; }
     
     public bool? isAccepted { get; set; }
+    
+    public string Status { get; set; }
 }

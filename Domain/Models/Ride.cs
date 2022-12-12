@@ -12,9 +12,9 @@ public class Ride
     public DateTime StartDate { get; set; }
     public int DriverId { get; set; }
     public int Capacity { get; set; }
-    
+    public string Status { get; set; }
 
-    public Ride(Location destination, DateTime startDate, Location startLocation, int id, int driverId , int capacity)
+        public Ride(Location destination, DateTime startDate, Location startLocation, int id, int driverId , int capacity)
     {
         Destination = destination;
         StartDate = startDate;
@@ -22,6 +22,7 @@ public class Ride
         Id = id;
         DriverId = driverId;
         Capacity = capacity;
+        Status = "Created";
     }
     
     public Ride(){}

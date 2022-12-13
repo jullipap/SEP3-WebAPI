@@ -53,8 +53,13 @@ public class RideDao : IRideDao
            };
 
            DateTime dateTime = new DateTime(rideMessage.StartDate) ;
-           
-           rides.Add(new Ride(endLocation,dateTime,startLocation,rideMessage.Id,rideMessage.Driver.Id, rideMessage.Capacity));
+           Ride ride = new Ride(endLocation, dateTime, startLocation, rideMessage.Id, rideMessage.Driver.Id,
+               rideMessage.Capacity);
+           if (rideMessage.IsCancelled)
+           {
+               ride.Status = "Cancelled";
+           }
+           rides.Add(ride);
        }
    
        return rides;
@@ -162,8 +167,12 @@ public class RideDao : IRideDao
             };
 
             DateTime dateTime = new DateTime(rideMessage.StartDate) ;
-           
-            rides.Add(new Ride(endLocation,dateTime,startLocation,rideMessage.Id,driverId, rideMessage.Capacity));
+            Ride ride = new Ride(endLocation, dateTime, startLocation, rideMessage.Id, driverId, rideMessage.Capacity);
+           if (rideMessage.IsCancelled)
+           {
+               ride.Status = "Cancelled";
+           }
+           rides.Add(ride);
         }
    
         return rides;
@@ -196,7 +205,10 @@ public class RideDao : IRideDao
         DateTime dateTime = new DateTime(rideMessage.StartDate) ;
 
         Ride ride = new Ride(endLocation, dateTime, startLocation, rideMessage.Id, rideMessage.Driver.Id, rideMessage.Capacity);
-
+        if (rideMessage.IsCancelled)
+        {
+            ride.Status = "Cancelled";
+        }
         return ride;
     }
 

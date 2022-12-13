@@ -66,11 +66,11 @@ public class ReservationsController : ControllerBase
     }
     [Authorize]
     [HttpGet,Route("user/{id:int}")]
-    public async Task<ActionResult<List<Reservation>>> GetAllReservationsByUserId([FromRoute]int userId)
+    public async Task<ActionResult<List<Reservation>>> GetAllReservationsByUserId([FromRoute]int id)
     {
         try
         {
-            var reservations = await reservationLogic.GetAllReservationsByUserIdAsync(userId);
+            var reservations = await reservationLogic.GetAllReservationsByUserIdAsync(id);
             return Ok(reservations);
         }
         catch (Exception e)
@@ -86,6 +86,7 @@ public class ReservationsController : ControllerBase
     {
         try
         {
+            
             await reservationLogic.ChangeReservationStatusAsync(dto);
             return Ok();
         }
